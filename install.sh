@@ -8,14 +8,22 @@ su czem
 #DEV CONFIG
 sudo apt-get update
 
-# Installing build essentials
+# Installing essential
 sudo apt-get install -y build-essential libssl-dev automake autoconf
+sudo apt-get install -y ssh
+sudo apt-get install -y check flex file rsync
+sudo apt-get install -y gcc g++
+sudo apt-get install -y libgl1 libgl1-mesa-dev 
+sudo apt-get install -y net-tools
 
 # Installing text editor
 sudo apt-get install -y vim emacs nano
 
-# Installing text editor
-sudo apt-get install -y curl sudo 
+# Installing tools
+sudo apt-get install -y terminator
+sudo apt-get install -y firefox
+sudo apt-get install -y gparted
+
 
 # Nodejs and NVM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
@@ -65,6 +73,8 @@ sudo npm install -g generator-angular-fullstack
 # Vim, Curl, Python - Some random useful stuff
 sudo apt-get install -y curl python-software-properties
 sudo apt-get install -y python-dev, python-pip
+sudo apt-get install -y python3
+sudo apt-get install idle
 sudo apt-get install -y libkrb5-dev
 
 # Installing JDK and JRE
@@ -91,8 +101,10 @@ sudo tlp stat
 # Erlang - Actor Concurrency Model based Programming Language
 sudo apt-get install -y erlang
 
-# Sticky Notes
+#  Notes
 sudo apt-get install -y xpad
+sudo apt-get install -y basket
+
 
 # KVM acceleration and cpu checker
 sudo apt-get install -y cpu-checker
