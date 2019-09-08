@@ -6,13 +6,6 @@
 
 3. Adapt the install.sh, comment or uncomment:
 
-# Bower - a dependency manager
-#sudo npm install -g bower
-
-# Yeoman - for generators
-sudo npm install -g yo
-
-
 4. build the custom iso:
 
 	`./build-iso.sh`
