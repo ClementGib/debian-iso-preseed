@@ -131,6 +131,9 @@ sudo apt-get install -y dict-moby-thesaurus
 # For Android Studio (Gradle Daemon)
 #touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
 
+#Golang
+sudo apt-get install golang
+
 # Zsh
 sudo apt-get install -y zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
