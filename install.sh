@@ -178,6 +178,10 @@ sudo apt-get install -y dict-moby-thesaurus
 # For Android Studio (Gradle Daemon)
 #touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
 
+#Arduino
+sudo apt-get install arduino -y
+
+
 #Golang
 sudo apt-get install golang -y
 
@@ -242,4 +246,25 @@ sudo rm android.tar.gz
 #VsCode
 #URL 09/2019
 cd ~/temp && wget -O vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868 && sudo dpkg -i vscode.deb
+
+#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28)
+cd ~/temp && wget -O intelliJ.tar.gz https://download.jetbrains.com/idea/ideaIC-2019.2.2.tar.gz\?_ga\=2.168603234.2104405915.1568068392-720424917.1568068392 
+tar -xvf intelliJ.tar.gz
+sudo mv idea-IC-192.6603.28 /opt
+
+#LAMPP:
+#Mysql
+sudo apt-get install mysql-server mysql-client libmysqlclient-dev -y
+
+#Apache server
+sudo apt-get install apache2 apache2-doc apache2-npm-prefork apache2-utils libexpat1 ssl-cert -y
+
+#Install PHP (php7.0 latest version of PHP)
+sudo apt-get install libapache2-mod-php7.0 php7.0 php7.0-common php7.0-curl php7.0-dev php7.0-gd php-pear php-imagick php7.0-mcrypt php7.0-mysql php7.0-ps php7.0-xsl -y
+
+#Install Phpmyadmin(for database)
+sudo apt-get install phpmyadmin
+
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
