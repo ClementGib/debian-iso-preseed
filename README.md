@@ -1,14 +1,17 @@
-MY DEBIAN (BUSTER) CONFIG
+MY DEBIAN (BUSTER) INSTALLATION AND CONFIG
 
-1. extract an iso:
+1. download iso debian netinstall
+
+
+2. extract an iso:
 
 	`./extract-iso.sh /path/to/iso/file.iso`
 
-2. `cp preseed.cfg.example preseed.cfg`, customize iso and preseed.cfg file
+3. `cp preseed.cfg.example preseed.cfg`, customize iso and preseed.cfg file
 
-3. Adapt the install.sh, comment or uncomment:
+4. Adapt the install.sh, comment or uncomment:
 
-4. build the custom iso:
+5. build the custom iso:
 
 	`./build-iso.sh`
 
