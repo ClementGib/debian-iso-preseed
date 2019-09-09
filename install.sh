@@ -1,4 +1,9 @@
-#!/bin/bash
+!/bin/bash
+
+#DEFAULT DEBIAN install 
+
+User=$1
+echo install and config for $User :
 
 #DEFAULT SOURCES 
 sudo cp sources.list /etc/apt/sources.list
@@ -6,29 +11,52 @@ sudo cp sources.list /etc/apt/sources.list
 #DEV CONFIG
 sudo apt-get update -y
 sudo apt-get upgrade -y
+sudo apt-get full-upgrade
 
-# Installing essential
+
+#CONFIG home user
+mkdir ~/repo
+mkdir ~/Dropbox
+sudo mkdir /mnt/D
+sudo ln -s /mnt/D ~/D
+
+mkdir ~/temp
+
+# Installing essential 
 sudo apt-get install -y build-essential libssl-dev automake autoconf
 sudo apt-get install -y ssh
 sudo apt-get install -y check flex file rsync
 sudo apt-get install -y gcc g++
 sudo apt-get install -y libgl1 libgl1-mesa-dev 
 sudo apt-get install -y net-tools
+sudo apt-get install -y -f libc6:i386 libncurses5android-studio-bundle-132.893413-linux.tgz:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 sudo apt-get install -y git
+sudo apt-get install -y locate
+sudo apt-get install -y libssl-dev
+sudo apt-get install -y libffi-dev
 
 
 # Installing text editor
 sudo apt-get install -y vim emacs nano
 
+#Config vim 
+cp vim/.* ~/
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#bash test/run
+
+
 # Installing tools
 sudo apt-get install -y terminator
 sudo apt-get install -y firefox
 sudo apt-get install -y gparted
+sudo apt-get install -y w3m
+
 
 
 # Nodejs and NVM
 
-sudo apt-get install curl software-properties-common
+sudo apt-get install -y curl software-properties-common
 curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
 sudo apt-get install -y nodejs
 
@@ -60,6 +88,8 @@ sudo npm install -g bower
 
 # Yeoman - for generators
 sudo npm install -g yo 
+e.sh
+
 
 
 # maven 
@@ -69,22 +99,33 @@ sudo apt-get install maven -y
 sudo npm install -g gulp-cli
 
 # Angular FullStack - My favorite MEAN boilerplate (MEAN = MongoDB, Express, Angularjs, Nodejs)
-sudo npm install -g generator-angular-fullstack
+sudo npm install -g generatsudo apt-get install -y gitor-angular-fullstack
 
-# Vim, Curl, Python - Some random useful stuff
-sudo apt-get install -y curl python-software-properties
-sudo apt-get install -y python-dev, python-pip
+#Update
+sudo apt-get update
+sudo apt-get upgrade
+#Curl, Python - Some random useful stuff
+#sudo apt-get install -y curl python-software-properties
+
+sudo apt-get install -y python3-pip
+sudo apt-get install -y python2-pip
+udo apt-get install -y python-dev
+sudo apt-get install -y python-pip
 sudo apt-get install -y python3
 sudo apt-get install -y idle
 sudo apt-get install -y libkrb5-dev
+sudo apt-get install -y -f python3.7
+
 
 # Installing JDK and JRE
 sudo apt-get install -y default-jre
 sudo apt-get install -y default-jdk
 
 # Gimp Image Editor
-sudo apt-get install -y gimp gimp-data gimp-plugin-registry gimp-data-extras
+sudo apt-get install -y gimp gimp-data gimp-plugin-registry gimp-data-extrase.sh
 
+
+sudo apt-get install -y git
 # Archive Extractors
 sudo apt-get install -y unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller
 
@@ -92,9 +133,13 @@ sudo apt-get install -y unace unrar zip unzip p7zip-full p7zip-rar sharutils rar
 sudo apt-get install -y filezilla
 
 # TLP - saves battery when Ubuntu is installed on Laptops
-sudo apt-get remove laptop-mode-tools
+#sudo apt-get remove laptop-mode-tools
+
 #push enter
-sudo add-apt-repository ppa:linrunner/tlp
+#ubuntu repo
+#sudo add-apt-repository ppa:linrunner/tlp
+
+#need backport for debian
 sudo apt-get update
 sudo apt-get install -y tlp tlp-rdw smartmontools ethtool
 sudo tlp start
@@ -140,6 +185,10 @@ sudo apt-get install golang -y
 # Zsh
 sudo apt-get install -y zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#cp config
+sh zsh/fonts/install.sh 
+cp zsh/.* ~/
+
 
 # Docker
 sudo apt-get install docker -y
@@ -149,12 +198,46 @@ sh get-docker.sh
 sudo pip install docker-compose -y
 
 
-
-
 #Tool ++
 sudo apt-get install -y vlc
 sudo apt-get install -y thunderbird
 sudo apt-get install -y libreoffice
+sudo apt-get install -y locate
+sudo apt-get install -y kazam
+sudo apt-get install -y clementine
 
 
+#Onenote
+#With npm
+sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+p3x-onenote &
+
+
+#dropbox
+#URL 09/2019
+#cd ~/temp && wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2019.02.14_amd64.deb
+#sudo ~/temp/.dropbox-dist/dropboxd
+cd ~/temp
+git clone git://github.com/dropbox/dropbox-sdk-python.git
+cd dropbox-sdk-python
+sudo python setup.py install
+
+#sublim
+#URL 09/2019
+cd ~/temp && wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install sublime-text
+
+
+#AndroidStudio (need to create shortcut /opt/android-studio)
+sudo apt-get install -y lib32stdc++6
+#URL 09/2019
+cd ~/temp && wget -O android.tar.gz https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz 
+tar -xvf android.tar.gz
+sudo mv android-studio /opt/
+sudo rm android.tar.gz
+
+#VsCode
+#URL 09/2019
+cd ~/temp && wget -O vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868 && sudo dpkg -i vscode.deb
 

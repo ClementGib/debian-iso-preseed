@@ -1,0 +1,12 @@
+1.Start "sudo bash start.sh >> log.txt"
+	Type password of root and user
+
+2.Verify in log.txt if every software are installed
+
+3.Now on firefox sign in to Sync 
+
+4.Custome KDE:
+	CUSTOM :
+		1.
+
+
