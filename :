@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -p "Nom de l'utilisateur :" -n 24 User
+
+#add sudo user
+#su root -c "usermod -aG sudo $User"
+su root -c "sed '21i$User    ALL=/(ALL:ALL/) ALL' sudofile > /etc/sudoers"
+
+
+
+#sudo -u $User echo execute the install.sh script
+#su $User
+

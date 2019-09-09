@@ -1,12 +1,11 @@
 #!/bin/bash
 
-#add sudo user
-su root
-usermod -aG sudo czem
-su czem
+#DEFAULT SOURCES 
+sudo cp sources.list /etc/apt/sources.list
 
 #DEV CONFIG
-sudo apt-get update
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 # Installing essential
 sudo apt-get install -y build-essential libssl-dev automake autoconf
@@ -15,6 +14,8 @@ sudo apt-get install -y check flex file rsync
 sudo apt-get install -y gcc g++
 sudo apt-get install -y libgl1 libgl1-mesa-dev 
 sudo apt-get install -y net-tools
+sudo apt-get install -y git
+
 
 # Installing text editor
 sudo apt-get install -y vim emacs nano
@@ -26,18 +27,18 @@ sudo apt-get install -y gparted
 
 
 # Nodejs and NVM
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-source ~/.profile
-sudo nvm install 7.10.0
-sudo nvm use 7.10.0
-node -v
+
+sudo apt-get install curl software-properties-common
+curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+sudo apt-get install -y nodejs
 
 #nodemon
 sudo npm install -g nodemon
 sudo npm install -g loopback-cli
 
 # Mongodb, Installing and starting server
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+sudo apt install wget gnupg
+
 echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org
@@ -74,7 +75,7 @@ sudo npm install -g generator-angular-fullstack
 sudo apt-get install -y curl python-software-properties
 sudo apt-get install -y python-dev, python-pip
 sudo apt-get install -y python3
-sudo apt-get install idle
+sudo apt-get install -y idle
 sudo apt-get install -y libkrb5-dev
 
 # Installing JDK and JRE
@@ -92,6 +93,7 @@ sudo apt-get install -y filezilla
 
 # TLP - saves battery when Ubuntu is installed on Laptops
 sudo apt-get remove laptop-mode-tools
+#push enter
 sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-get update
 sudo apt-get install -y tlp tlp-rdw smartmontools ethtool
@@ -132,14 +134,27 @@ sudo apt-get install -y dict-moby-thesaurus
 #touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
 
 #Golang
-sudo apt-get install golang
+sudo apt-get install golang -y
+
 
 # Zsh
 sudo apt-get install -y zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Docker
+sudo apt-get install docker -y
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
 # Docker-compose
-sudo pip install docker-compose
+sudo pip install docker-compose -y
+
+
+
+
+#Tool ++
+sudo apt-get install -y vlc
+sudo apt-get install -y thunderbird
+sudo apt-get install -y libreoffice
+
+
+
