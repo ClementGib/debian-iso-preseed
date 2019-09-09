@@ -205,6 +205,8 @@ sudo apt-get install -y libreoffice
 sudo apt-get install -y locate
 sudo apt-get install -y kazam
 sudo apt-get install -y clementine
+#dual boot
+sudo apt-get install -y grub-customizer
 
 
 #Onenote
