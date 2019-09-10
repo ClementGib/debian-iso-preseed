@@ -9,5 +9,5 @@ echo "Root 2"
 su root -c "sed '21i$User    ALL=(ALL:ALL) ALL' sudofile > /etc/sudoers"
 
 echo "Connexion $User and execute the install.sh script"
-sudo -u $User bash install.sh $User
+sudo -u $User bash install.sh $User >> log.txt
 
