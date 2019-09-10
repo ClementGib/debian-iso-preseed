@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 #DEFAULT DEBIAN install 
 
@@ -250,7 +250,11 @@ sudo mv idea-IC-192.6603.28 /opt
 
 #LAMPP:
 #Mysql
-#sudo apt-get install mysql-server mysql-client libmysqlclient-dev -y
+wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb
+
+#Workbench 
+wget -O workbench.deb https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.17-1ubuntu18.04_amd64.deb
 
 #Apache server
 #sudo apt-get install apache2 apache2-doc apache2-npm-prefork apache2-utils libexpat1 ssl-cert -y
