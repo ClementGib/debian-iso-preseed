@@ -29,12 +29,12 @@ sudo apt-get install -y check flex file rsync
 sudo apt-get install -y gcc g++
 sudo apt-get install -y libgl1 libgl1-mesa-dev 
 sudo apt-get install -y net-tools
-sudo apt-get install -y -f libc6:i386 libncurses5android-studio-bundle-132.893413-linux.tgz:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 sudo apt-get install -y git
 sudo apt-get install -y locate
 sudo apt-get install -y libssl-dev
 sudo apt-get install -y libffi-dev
-
+sudo apt-get install -y wget
+sudo apt-get install -y aptitude
 
 # Installing text editor
 sudo apt-get install -y vim emacs nano
@@ -63,15 +63,6 @@ sudo apt-get install -y nodejs
 #nodemon
 sudo npm install -g nodemon
 sudo npm install -g loopback-cli
-
-# Mongodb, Installing and starting server
-sudo apt install wget gnupg
-
-echo "deb http://repo.mongodb.org/apt/debian "$(lsb_release -sc)"/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb.list
-sudo apt-get update
-sudo apt-get install -y mongodb-org
-sudo service mongod start
-sudo service mongod status
 
 # Forever to run nodejs scripts forever
 sudo npm install forever -g
@@ -219,6 +210,11 @@ sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
 p3x-onenote &
 
 
+#Teamviewer
+ cd ~/temp && wget -O teamviewer.deb https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+sudo dpkg -i teamviewer.deb
+
+
 #dropbox
 #URL 09/2019
 #cd ~/temp && wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2019.02.14_amd64.deb
@@ -254,16 +250,28 @@ sudo mv idea-IC-192.6603.28 /opt
 
 #LAMPP:
 #Mysql
-sudo apt-get install mysql-server mysql-client libmysqlclient-dev -y
+#sudo apt-get install mysql-server mysql-client libmysqlclient-dev -y
 
 #Apache server
-sudo apt-get install apache2 apache2-doc apache2-npm-prefork apache2-utils libexpat1 ssl-cert -y
+#sudo apt-get install apache2 apache2-doc apache2-npm-prefork apache2-utils libexpat1 ssl-cert -y
 
 #Install PHP (php7.0 latest version of PHP)
-sudo apt-get install libapache2-mod-php7.0 php7.0 php7.0-common php7.0-curl php7.0-dev php7.0-gd php-pear php-imagick php7.0-mcrypt php7.0-mysql php7.0-ps php7.0-xsl -y
+#sudo apt-get install libapache2-mod-php7.0 php7.0 php7.0-common php7.0-curl php7.0-dev php7.0-gd php-pear php-imagick php7.0-mcrypt php7.0-mysql php7.0-ps php7.0-xsl -y
 
 #Install Phpmyadmin(for database)
-sudo apt-get install phpmyadmin
+#sudo apt-get install phpmyadmin
+
+
+
+# Mongodb, Installing and starting server
+sudo apt install gnupg
+cd ~/temp
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+
+
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
