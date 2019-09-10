@@ -1,7 +1,10 @@
-1.Start "sudo bash start.sh >> log.txt"
+1.Start "sudo bash start.sh"
 	Type password of root and user
 
 2.Verify in log.txt if every software are installed
+
+3.Create an shortcut for the autobuild apps in /opt/ (exemple android-studio)
+	.
 
 3.Now on firefox sign in to Sync 
 
