@@ -4,21 +4,30 @@ User=$1
 echo install and config for $User debug version:
 
 
-######################################################################
+########################################################################
+#	                   CONFIG URL variables		               #
+########################################################################
 #Config URL and Variable
 #Java
-
-
-$Netbeans=lien
-$Android=lien
-$IntelliJ=lien
-$SublimTxt=lien
-$VsCode=lien
-$Mongodb=lien
-
+Tomcat=https://www.apache.org/dist/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24-deployer.tar.gz
+Payara=https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.193/payara-5.193.zip
+Netbeans_java=lien
+Eclipse_java=lien
 #if specific version
-$JDK=url
-$JRE=url
+JDK=url
+JRE=url
+
+Netbeans=lien
+
+#URL ANDROID 09/2019 
+Android=https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz
+#URL IntelliJ 09/2019 
+IntelliJ=https://download.jetbrains.com/idea/ideaIC-2019.2.2.tar.gz\?_ga\=2.168603234.2104405915.1568068392-720424917.1568068392
+SublimTxt=lien
+VsCode=lien
+Mongodb=lien
+
+
 
 #####################################################################
 #DEFAULT SOURCES LIST OF DEBIAN BUSTER 
@@ -33,15 +42,21 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get full-upgrade
 
+#temps dir for install
+mkdir ~/temp
+
+#Location of softwares
+echo Location of softwares: > locate.txt
 
 ########################################################################
-#CONFIG perosnal home user
+#	               CONFIG personal home user		       #
+########################################################################
+
 read -p "My personal config of user $User ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	mkdir ~/repo
 	mkdir ~/Dropbox
-	mkdir ~/temp
 	sudo mkdir /mnt/D
 	sudo ln -s /mnt/D ~/D
 	#Auto mount ?
@@ -53,7 +68,8 @@ fi
 
 
 ########################################################################
-# Installing essential build packages
+#	                 Install essential build 	               #
+########################################################################
 read -p "Install essential package (need for the rest) ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -72,9 +88,9 @@ else
 	echo no essential package
 
 fi
-
-
-###########################################################################
+########################################################################
+#	                      Install JAVA          	               #
+########################################################################
 #JAVA
 read -p "Install Java ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -92,6 +108,7 @@ then
 		sudo apt-get install openjdk-12-jdk
 		sudo apt-get install openjdk-12-jre
 		sudo apt-get install oracle-java12-installer
+		sudo apt update
 	fi
 	read -p "Install java 11 ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
@@ -129,18 +146,31 @@ then
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	
 		cd ~/temp
-		wget -O tomcat.tar.gz "http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.11/bin/apache-tomcat-9.0.11.tar.gz"
+		wget -O tomcat.tar.gz $Tomcat
 		sudo mkdir /opt/tomcat
 		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1
 
 	then
 	fi
 
+	read -p "Install payara ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	
+		sudo update-alternatives --config java
+		cd ~/temp
+		wget -O tomcat.tar.gz $Tomcat
+		sudo mkdir /opt/tomcat
+		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1
+	then
+	fi
+
 
 fi
 
-
-####################################################################################
+########################################################################
+########################################################################
+#	                 	C and C++ 		               #
+########################################################################
 #C and C++ 
 read -p "Install C and Cpp tools? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -151,35 +181,33 @@ then
 	# Installing C++ compiler
 	sudo apt-get install g++
 	
-	read -p "Install IDE C/Cpp (Netbeans) ? yes or no" -n 1 -r
-	if [[ $REPLY =~ ^[Yy]$ ]]
-	then
-		#Install Netbeans
-	fi
 
 fi
-
-####################################################################################
-#Python#need backport for debian
-
-
-read -p "Install C and Cpp tools? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-sudo apt-get install -y python3-pip
-sudo apt-get install -y python2-pip
-udo apt-get install -y python-dev
-sudo apt-get install -y python-pip
-sudo apt-get install -y python3
-sudo apt-get install -y idle
-sudo apt-get install -y libkrb5-dev
-sudo apt-get install -y -f python3.7
-
-fi
-
 
 ########################################################################
-# Installing crypto packagess
+########################################################################
+#	      		        Python		             	       #
+########################################################################
+read -p "Install Python? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install python3-pip
+sudo apt-get install python2-pip
+sudo apt-get install python-pip
+
+
+sudo apt update
+sudo apt-get install -f python-dev
+sudo apt-get install -y python3
+sudo apt-get install -y idle
+sudo apt-get install -y -f python3.7
+fi
+
+########################################################################
+#	                       Cryptography			       #
+########################################################################
 read -p "cryptography package ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -194,10 +222,11 @@ else
 
 fi
 
-
+########################################################################
+#	                 	Lib OPENGL 	                       #
 ########################################################################
 # Installing crypto packagess
-read -p "cryptography package ? yes or no " -n 1 -r
+read -p "OPENGL lib ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	
@@ -206,19 +235,15 @@ then
 
         
 else
-	echo no cryptography libs
+	echo no OPENGL libs
 
 fi
 
 
+########################################################################
 
-
-
-
-
-
-
-
+########################################################################
+#	                 Install essential build 	               #
 ########################################################################
 #Install and config text editor
 read -p "Install texteditor ? yes or no" -n 1 -r
@@ -226,7 +251,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo install text editor :
 	# Installing text editor
-	sudo apt-get install -y vim emacs nano
+	sudo apt-get install -y vim emacs
 	read -p "Config vim with auto-plug and addons? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
@@ -241,9 +266,10 @@ then
 fi
 
 
-
 ########################################################################
-#NODE:
+########################################################################
+#	                 	   NODE	                               #
+########################################################################
 #Nodejs and NVM
 sudo apt-get install -y curl software-properties-common
 curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
@@ -255,19 +281,13 @@ sudo npm install -g loopback-cli
 
 # Forever to run nodejs scripts forever
 sudo npm install forever -g
-
 # Grunt - an automated task runn#need backport for debianer
 sudo npm install -g grunt-cli
-
 # Bower - a dependency manager
 sudo npm install -g bower
-
 # Yeoman - for generators
 sudo npm install -g yo 
 e.sh
-
-
-
 
 # Gulp - an automated task runner
 sudo npm install -g gulp-cli
@@ -284,46 +304,21 @@ sudo apt-get upgrade
 
 
 ########################################################################
-# Installing basic programmes 
-read -p "Install usefull tools ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	echo Install tools	
-        sudo apt-get install terminator
-        sudo apt-get install gparted
-        sudo apt-get install w3m
-        sudo apt-get install ssh
-        sudo apt-get install git
-	sudo apt-get install xclip
-        sudo apt-get install wget
-        sudo apt-get install locate
-        sudo apt-get install net-tools
-        sudo apt-get install check 
-        sudo apt-get install flex 
-        sudo apt-get install file
-        sudo apt-get install aptitude
-        sudo apt-get install net-tools
-        sudo apt-get install curl 
-	sudo apt-get install rsync
-
-else
-	echo no tools
-fi
-
-
-
+########################################################################
+#	                  Install usefull tools 	               #
 ########################################################################
 # Installing basic programmes 
 read -p "Install usefull tools ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	echo Install tools	
+	echo Install tools :	
         sudo apt-get install terminator
         sudo apt-get install gparted
         sudo apt-get install w3m
         sudo apt-get install git
 	sudo apt-get install xclip
 	sudo apt-get install locate
+	sudo apt-get install find
         sudo apt-get install net-tools
         sudo apt-get install check 
         sudo apt-get install flex 
@@ -341,10 +336,11 @@ then
 
 
 else
-	echo no tools
+	echo no usefull tools
 fi
 
-
+########################################################################
+#	                 Install Archive extractors	               #
 ########################################################################
 #Archive Extractors  
 read -p "Install Archive extractors ? yes or no" -n 1 -r
@@ -429,22 +425,87 @@ sudo apt-get install -y dict-wn
 sudo apt-get install -y dict-devil
 sudo apt-get install -y dict-moby-thesaurus
 
-# For Android Studio (Gradle Daemon)
-#touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
-
-#Arduino
-sudo apt-get install arduino -y
 
 
-#Golangread -p "Install C and Cpp tools? yes or no" -n 1 -r
+
+########################################################################
+read -p "Install Golang ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	echo install Cpp tools :
-	# Installing C++
-	sudo apt-get install gcc
-	sudo apt-get install g++
+sudo apt-get install golang
+fi
 
-sudo apt-get install golang -y
+########################################################################
+#IDE
+read -p "Install Netbeans ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+		#Install Netbeans
+		echo Netbeans : opt/android-studio >> locate.txt 
+fi
+
+read -p "Install Eclipse ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+		#Install Eclipse
+		#echo Eclipse : opt/android-studio >> locate.txt 
+fi
+
+read -p "Install Netbeans Java ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+		#Install Netbeans
+		echo Netbeans : opt/android-studio >> locate.txt 
+fi
+
+read -p "Install Eclipse Java ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+		#Install Netbeans
+		echo Eclipse : opt/android-studio >> locate.txt 
+fi
+
+read -p "Install Android studio ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+		#Install Netbeans
+		#AndroidStudio (need to create shortcut /opt/android-studio)
+		sudo apt-get install -y lib32stdc++6
+		
+		cd ~/temp && wget -O android.tar.gz $Android 
+		tar -xvf android.tar.gz
+		sudo mv android-studio /opt/
+		sudo rm android.tar.gz
+		#Location of softwares file
+		echo Android-Studio : opt/android-studio >> locate.txt 
+fi
+
+read -p "Install IntelliJ Community ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+		#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
+		cd ~/temp && wget -O intelliJ.tar.gz $IntelliJ 
+		tar -xvf intelliJ.tar.gz
+		sudo mv idea-IC-192.6603.28 /opt
+		#Location of softwares file
+		echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
+fi
+
+
+read -p "Install Arduino IDE ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+		#Arduino
+		sudo apt-get install arduino
+		#Location of softwares file
+		echo Arduino : etc/Arduino >> locate.txt 
+fi
+
+
+
+
+
+
 
 
 # Zsh
@@ -502,23 +563,14 @@ sudo apt-get update
 sudo apt-get install sublime-text
 
 
-#AndroidStudio (need to create shortcut /opt/android-studio)
-sudo apt-get install -y lib32stdc++6
-#URL 09/2019
-cd ~/temp && wget -O android.tar.gz https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz 
-tar -xvf android.tar.gz
-sudo mv android-studio /opt/
-sudo rm android.tar.gz
+
 
 #VsCode
 #URL 09/2019
 cd ~/temp && wget -O vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868 && sudo dpkg -i vscode.deb
 sudo apt-get install -f
 
-#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28)
-cd ~/temp && wget -O intelliJ.tar.gz https://download.jetbrains.com/idea/ideaIC-2019.2.2.tar.gz\?_ga\=2.168603234.2104405915.1568068392-720424917.1568068392 
-tar -xvf intelliJ.tar.gz
-sudo mv idea-IC-192.6603.28 /opt
+
 
 #LAMPP:
 #Mysql
