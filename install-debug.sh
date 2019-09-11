@@ -32,6 +32,7 @@ SublimeTxt=https://download.sublimetext.com/sublimehq-pub.gpg
 VsCode=vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868
 #URL MondoDB 09/2019 
 Mongodb=https://www.mongodb.org/static/pgp/server-4.2.asc
+#URL Slack 09/2019
 Slack=https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
 #if specific version
 #JDK=url
@@ -42,8 +43,12 @@ Slack=https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.
 ########################################################################
 #DEFAULT SOURCES LIST OF DEBIAN BUSTER 
 echo add default buster source.list
+sudo chown root source.list
 sudo cp sources.list /etc/apt/sources.list
 # /!\ NEED TO ADAPT FOR UBUNTU /!\
+
+sudo bash PubKey.sh
+
 
 #UPDATE UPGRADE
 #echo Update et full Upgrade 
@@ -127,6 +132,18 @@ then
 		sudo apt update
 	fi
 	
+########################################################################
+#	           	         Onenote		 	       #
+########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
+fi
+
 	read -p "Install java 11 ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then		
@@ -250,6 +267,18 @@ else
 fi
 
 #Update
+########################################################################
+#	           	         Onenote		 	       #
+########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
+fi
+
 sudo apt-get update
 sudo apt-get upgrade
 
@@ -426,6 +455,18 @@ then
 	sudo apt-get install zip 
 	sudo apt-get install unzip 
 	sudo apt-get install p7zip-full 
+########################################################################
+#	           	         Onenote		 	       #
+########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
+fi
+
 	sudo apt-get install p7zip-rar 
 	sudo apt-get install sharutils 
 	sudo apt-get install rar 
@@ -463,6 +504,18 @@ else
 fi
 
 ########################################################################
+########################################################################
+#	           	         Onenote		 	       #
+########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
+fi
+
 #	                 Dictionary client server	               #gnupg 
 ########################################################################
 read -p "Install dictionary ? yes or no" -n 1 -r
@@ -479,6 +532,18 @@ thenapt-transport-https dirmngr
 	sudo apt-get install dict-moby-thesaurus
 else
 	echo no dictionary
+fi
+
+########################################################################
+#	           	         Onenote		 	       #
+########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
 fi
 
 ########################################################################
@@ -514,6 +579,18 @@ then
 	while [[ $REPLY =~ ^[Yy]$ ]]
 	do
 	#Install Eclipse
+########################################################################
+#	           	         Onenote		 	       #
+########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
+fi
+
 	cd ~/temp
 	wget -O eclipse.tar.gz $Eclipse
 	tar -xvf eclipse.tar.gz
@@ -559,6 +636,18 @@ then
 	echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
 fi
 
+########################################################################
+#	           	         Onenote		 	       #
+########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
+fi
+
 
 read -p "Install Arduino IDE ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -574,7 +663,19 @@ fi
 
 ########################################################################
 #	           	          DOCKER			       #
+##########################################################################################################
+#	           	         Onenote		 	       #
 ########################################################################
+read -p "Install Onenote ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Onenote
+	#With npm
+	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
+	p3x-onenote &
+fi
+
+######################################
 read -p "Install Docker ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -625,9 +726,24 @@ then
 	p3x-onenote &
 fi
 
+
+########################################################################
+#	           	         Slack		 	       #
+########################################################################
+read -p "Install Slack ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Slack 
+	wget -O Slack.deb $Slack
+	sudo dpkg -i Slack.deb
+fi
+
+
 ########################################################################
 #	           	         Teamviewer		 	       #
-########################################################################
+#############################################TOR
+deb [arch=i386,amd64,armel,armhf] http://deb.torproject.org/torproject.org stable main
+deb-src [arch=i386,amd64,armel,armhf] http://deb.torproject.org/torproject.org stable main##############################
 read -p "Install Teamviewer ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
