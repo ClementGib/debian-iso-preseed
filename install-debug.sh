@@ -26,14 +26,16 @@ Eclipse=http://eclipse.mirror.garr.it/mirrors/eclipse//oomph/epp/2019-06/R/eclip
 Android=https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz
 #URL IntelliJ 09/2019 
 IntelliJ=https://download.jetbrains.com/idea/ideaIC-2019.2.2.tar.gz\?_ga\=2.168603234.2104405915.1568068392-720424917.1568068392
-SublimTxt=lien
-VsCode=lien
-Mongodb=lien
+#URL Sublimetext 09/2019 
+SublimeTxt=https://download.sublimetext.com/sublimehq-pub.gpg
+#URL VsCode 09/2019 
+VsCode=vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868
+#URL MondoDB 09/2019 
+Mongodb=https://www.mongodb.org/static/pgp/server-4.2.asc
 
 #if specific version
-JDK=url
-JRE=url
-
+#JDK=url
+#JRE=url
 
 ########################################################################
 #	                    UPDATE AND UPGRADE		               #
@@ -147,7 +149,7 @@ then
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		sudo apt-get install maven
-    fi
+    fiEOF (End Of File).
     
 	read -p "Install jenkins (java 8>=) ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
@@ -262,6 +264,7 @@ then
 	sudo apt-get install libffi-dev 
 	sudo apt-get install dirmngr
 	sudo apt-get install apt-transport-https 
+	sudo apt-get install gnupg 
 	
 	#with Python
 	sudo pip install cryptography
@@ -460,7 +463,7 @@ else
 fi
 
 ########################################################################
-#	                 Dictionary client server	               #
+#	                 Dictionary client server	               #gnupg 
 ########################################################################
 read -p "Install dictionary ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -500,7 +503,7 @@ then
 	cd ~/temp
 	wget -O netbeans8.sh $Netbeans
 	bash netbeans8.sh
-	echo End of netbeans installation
+	echo End of netbeans installationgnupg 
 	cd -
 	
 fi
@@ -541,6 +544,7 @@ then
 	sudo mv android-studio /opt/
 	sudo rm android.tar.gz
 	#Location of softwares file
+apt-transport-https dirmngr
 	echo Android-Studio : opt/android-studio >> locate.txt 
 fi
 
@@ -652,14 +656,14 @@ fi
 
 
 ########################################################################
-#	           	       Sublimtext			       #
+#	           	       Sublimetext			       #
 ########################################################################
 read -p "Install Sublimetext ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#sublimText
 	#URL 09/2019
-	cd ~/temp && wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+	cd ~/temp && wget -qO - $SublimeTxt | sudo apt-key add -
 	sudo apt-get update
 	sudo apt-get install sublime-text
 fi
