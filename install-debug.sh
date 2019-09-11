@@ -11,6 +11,8 @@ echo install and config for $User debug version:
 #Java
 Tomcat=https://www.apache.org/dist/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24-deployer.tar.gz
 Payara=https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.193/payara-5.193.zip
+NodeV=https://deb.nodesource.com/setup_12.x
+ZSH=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 Netbeans=lien
 Eclipse=lien
 #if specific version
@@ -35,7 +37,6 @@ echo add default buster source.list
 sudo cp sources.list /etc/apt/sources.list
 # /!\ NEED TO ADAPT FOR UBUNTU /!\
 
-
 #UPDATE UPGRADE
 #echo Update et full Upgrade 
 sudo apt-get update -y
@@ -47,6 +48,8 @@ mkdir ~/temp
 
 #Location of softwares
 echo Location of softwares: > locate.txt
+
+
 
 ########################################################################
 #	               CONFIG personal home user		       #
@@ -152,6 +155,7 @@ then
 		wget -O tomcat.tar.gz $Tomcat
 		sudo mkdir /opt/tomcat
 		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1
+		cd -
 	fi
 
 	read -p "Install payara ? yes or no" -n 1 -r
@@ -159,12 +163,16 @@ then
 	then
 		sudo update-alternatives --config java
 		cd ~/temp
-		wget -O tomcat.tar.gz $Tomcat
-		sudo mkdir /opt/tomcat
-		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1	
+		wget -O Payara.zip $Payara
+		unzip Payara.zip
+		sudo cp payara5 /opt/
+		cd -
 	fi
 
 fi
+
+sudo apt-get update
+sudo apt-get upgrade
 
 ########################################################################
 ########################################################################
@@ -175,8 +183,8 @@ read -p "Install C and Cpp tools? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo install Cpp tools :
-	# Installing C compiler
-	sudo apt-get install gcc
+	# Installing C compiler (include in g++)
+	#sudo apt-get install gcc
 	# Installing C++ compiler
 	sudo apt-get install g++	
 fi
@@ -188,19 +196,53 @@ fi
 read -p "Install Python? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+	sudo apt-get install python-pip
+	sudo apt-get install python3-pip
+	sudo apt-get install idle
+	sudo apt-get install curl python-software-properties
+	sudo apt update
+	
+
+fi
+
+
+########################################################################
+########################################################################
+#	                 	   NODE	                               #
+########################################################################
+
+read -p "Install Python? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Nodejs and NVM
+	sudo apt-get install -y curl software-properties-common
+	curl -sL $NodeV | sudo bash -
+	sudo apt-get install -y nodejs
+
+	#nodemon	
+	sudo npm install -g nodemon
+	sudo npm install -g loopback-cli
+
+	# Forever to run nodejs scripts forever
+	sudo npm install forever -g
+	# Grunt - an automated task runn#need backport for debianer
+	sudo npm install -g grunt-cli
+	# Bower - a dependency manager
+	sudo npm install -g bower
+	# Yeoman - for generators
+	sudo npm install -g yo 
+	# Gulp - an automated task runner
+	sudo npm install -g gulp-cli
+
+	# Angular FullStack - My favorite MEAN boilerplate (MEAN = MongoDB, Express, Angularjs, Nodejs)
+	sudo npm install -g generator-angular-fullstack generatsudo 
+	sudo apt-get install gitor-angular-fullstack
+
+fi
+
+#Update
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install python3-pip
-sudo apt-get install python2-pip
-sudo apt-get install python-pip
-
-
-sudo apt update
-sudo apt-get install -f python-dev
-sudo apt-get install -y python3
-sudo apt-get install -y idle
-sudo apt-get install -y -f python3.7
-fi
 
 ########################################################################
 #	                       Cryptography			       #
@@ -218,6 +260,8 @@ else
 	echo no cryptography libs
 
 fi
+
+
 
 ########################################################################
 #	                 	Lib OPENGL 	                       #
@@ -240,7 +284,7 @@ fi
 ########################################################################
 
 ########################################################################
-#	                 Install essential build 	               #
+#	                   Install texteditor   	               #
 ########################################################################
 #Install and config text editor
 read -p "Install texteditor ? yes or no" -n 1 -r
@@ -249,7 +293,7 @@ then
 	echo install text editor :
 	# Installing text editor
 	sudo apt-get install -y vim emacs
-	read -p "Config vim with auto-plug and addons? yes or no" -n 1 -r
+	read -p "Config vim with auto-plug and addons ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		echo config vim :
@@ -262,49 +306,25 @@ then
 	fi
 fi
 
-
-########################################################################
-########################################################################
-#	                 	   NODE	                               #
-########################################################################
-#Nodejs and NVM
-sudo apt-get install -y curl software-properties-common
-curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-sudo apt-get install -y nodejs
-
-#nodemon
-sudo npm install -g nodemon
-sudo npm install -g loopback-cli
-
-# Forever to run nodejs scripts forever
-sudo npm install forever -g
-# Grunt - an automated task runn#need backport for debianer
-sudo npm install -g grunt-cli
-# Bower - a dependency manager
-sudo npm install -g bower
-# Yeoman - for generators
-sudo npm install -g yo 
-e.sh
-
-# Gulp - an automated task runner
-sudo npm install -g gulp-cli
-
-# Angular FullStack - My favorite MEAN boilerplate (MEAN = MongoDB, Express, Angularjs, Nodejs)
-sudo npm install -g generatsudo apt-get install -y gitor-angular-fullstack
-
-#Update
 sudo apt-get update
 sudo apt-get upgrade
-#Curl, Python - Some random useful stuff
-#sudo apt-get install -y curl python-software-properties
-
 
 
 ########################################################################
+#	                   Install ZSH config		               #
+########################################################################
+# Zsh
+sudo apt-get install -y zsh
+sh -c "$(curl -fsSL $ZSH)"
+#cp config
+sh zsh/fonts/install.sh 
+cp zsh/.* ~/
+
+
 ########################################################################
 #	                  Install usefull tools 	               #
 ########################################################################
-# Installing basic programmes 
+#Some random useful stuff
 read -p "Install usefull tools ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -325,7 +345,7 @@ then
 	sudo apt-get install git
 	sudo apt-get install filezilla
 
-#Installed by default
+#Usually installed by default 
 #	sudo apt-get install wget
 #	sudo apt-get install firefox
 #       sudo apt-get install ssh
@@ -364,25 +384,12 @@ else
 fi
 
 
-####################################################################################
+########################################################################
+#	                 Install Archive extractors	               #
+########################################################################
 #Tools
 # TLP - saves battery when Ubuntu is installed on Laptops
 #sudo apt-get remove laptop-mode-tools
-
-read -p "Install C and Cpp tools? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	echo install Cpp tools :
-	# Installing C++
-	sudo apt-get install gcc
-	sudo apt-get install g++
-
-else
-	echo no archive extractor
-fi
-
-
-
 #Uncomment Ubuntu
 #sudo add-apt-repository ppa:linrunner/tlp
 #Need bask port Debian (backport)
@@ -413,6 +420,12 @@ sudo apt-get install -y alien dpkg-dev debhelper
 # Calibre - Ebook reader and converter
 sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
 
+
+
+########################################################################
+#	                 Install Archive extractors	               #
+########################################################################
+
 # Dictionary Client and Server with Thesaurus
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 sudo apt-get install -y dict
@@ -423,8 +436,8 @@ sudo apt-get install -y dict-devil
 sudo apt-get install -y dict-moby-thesaurus
 
 
-
-
+########################################################################
+#	                 Install Archive extractors	               #
 ########################################################################
 read -p "Install Golang ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -432,6 +445,10 @@ then
 sudo apt-get install golang
 fi
 
+
+
+########################################################################
+#	           	          IDE			               #
 ########################################################################
 #IDE
 read -p "Install Netbeans ? yes or no" -n 1 -r
@@ -499,18 +516,6 @@ then
 fi
 
 
-
-
-
-
-
-
-# Zsh
-sudo apt-get install -y zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#cp config
-sh zsh/fonts/install.sh 
-cp zsh/.* ~/
 
 
 # Docker
