@@ -319,6 +319,7 @@ then
 	sudo apt-get install lib32z1-dev
 	sudo apt-get install lib32stdc++6
 	echo OPENGL and lib32 installed
+sudo apt-get install -y clementine
 	
 	
         
@@ -369,6 +370,7 @@ then
 	cp zsh/.* ~/
 	echo ZSH : ~/.zsh >> locate.txt 
 else
+sudo apt-get install -y clementine
 	echo no zsh config
 fi
 
@@ -475,6 +477,7 @@ fi
 	sudo apt-get install arj 
 	sudo apt-get install cabextract 
 	sudo apt-get install file-roller
+sudo apt-get install -y clementine
 	
 	
 else
@@ -511,6 +514,7 @@ read -p "Install Onenote ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#Onenote
+sudo apt-get install -y clementine
 	#With npm
 	sudo npm install -g p3x-onenote --unsafe-perm=true --allow-root
 	p3x-onenote &
@@ -561,6 +565,7 @@ fi
 ########################################################################
 #IDE
 read -p "Install Netbeans ? yes or no" -n 1 -r
+sudo apt-get install -y clementine
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 		
@@ -662,8 +667,6 @@ fi
 
 
 ########################################################################
-#	           	          DOCKER			       #
-##########################################################################################################
 #	           	         Onenote		 	       #
 ########################################################################
 read -p "Install Onenote ? yes or no" -n 1 -r
@@ -675,7 +678,10 @@ then
 	p3x-onenote &
 fi
 
-######################################
+
+########################################################################
+#	           	          DOCKER			       #
+########################################################################
 read -p "Install Docker ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -713,6 +719,18 @@ then
 	sudo apt-get install -y kazam
 	sudo apt-get install -y clementine
 fi
+
+########################################################################
+#	           	          DOCKER			       #
+#######################################################################
+read -p "Install slack  ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	#Slack
+	wget -O slack.deb $Slack
+	sudo dpkg -i slack.deb
+fi
+
 
 ########################################################################
 #	           	         Onenote		 	       #
