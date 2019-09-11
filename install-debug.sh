@@ -1,19 +1,13 @@
 #!/bin/bash
-
 #DEFAULT DEBIAN install - config
 User=$1
-echo install and config for $User :
-
-
-
-
+echo install and config for $User debug version:
 
 
 ######################################################################
 #Config URL and Variable
 #Java
-$JDK=
-$JRE=
+
 
 $Netbeans=lien
 $Android=lien
@@ -21,6 +15,11 @@ $IntelliJ=lien
 $SublimTxt=lien
 $VsCode=lien
 $Mongodb=lien
+
+#if specific version
+$JDK=url
+$JRE=url
+
 #####################################################################
 #DEFAULT SOURCES LIST OF DEBIAN BUSTER 
 echo add default buster source.list
@@ -28,9 +27,8 @@ sudo cp sources.list /etc/apt/sources.list
 # /!\ NEED TO ADAPT FOR UBUNTU /!\
 
 
-
 #UPDATE UPGRADE
-echo Update et full Upgrade 
+#echo Update et full Upgrade 
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get full-upgrade
@@ -43,70 +41,178 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	mkdir ~/repo
 	mkdir ~/Dropbox
+	mkdir ~/temp
 	sudo mkdir /mnt/D
 	sudo ln -s /mnt/D ~/D
-	mkdir ~/temp
+	#Auto mount ?
+	
 	echo My Home config of $User is ready
 else
 	echo No special Home config 
 fi
 
 
-
-
 ########################################################################
-# Installing essential 
-read -p "essential package (need for the rest) ? yes or no " -n 1 -r
+# Installing essential build packages
+read -p "Install essential package (need for the rest) ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo install essential package:
         sudo apt-get install build-essential 
-        sudo apt-get install libssl-dev 
         sudo apt-get install automake 
         sudo apt-get install autoconf
-        sudo apt-get install rsync
-        sudo apt-get install libgl1
-        sudo apt-get install libgl1-mesa-dev 
-        sudo apt-get install libssl-dev
-        sudo apt-get install libffi-dev 
-   
-
+  	
+	read -p "Install common independent software package (usefull for the rest) ? yes or no " -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		sudo apt-get install software-properties-common
+	fi
+	
 else
 	echo no essential package
 
 fi
 
+
 ###########################################################################
 #JAVA
+read -p "Install Java ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	# Installing JDK and JRE
+	sudo apt-get install -y default-jre
+	sudo apt-get install -y default-jdk
 
-# Installing JDK and JRE
-sudo apt-get install -y default-jre
-sudo apt-get install -y default-jdk
+	read -p "Install version 12 with oracle? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		# Installing JDK and JRE oracle 12
+		sudo add-apt-repository ppa:linuxuprising/java
+		sudo apt-get update
+		sudo apt-get install openjdk-12-jdk
+		sudo apt-get install openjdk-12-jre
+		sudo apt-get install oracle-java12-installer
+	fi
+	read -p "Install java 11 ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+			
+		# Installing JDK and JRE 11
+		sudo apt install openjdk-11-jdk
+		sudo apt install openjdk-11-jre
+		sudo apt update
+	fi
+	
+	
+	read -p "Install java 8 ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	
+		# Installing JDK and JRE 8
+		sudo apt install openjdk-8-jdk
+		sudo apt install openjdk-8-jre
+		sudo apt update
+	then
+	fi
+	
+	read -p "Install maven ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		sudo apt-get install maven
+		
+	read -p "Install jenkins (java 8>=) ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	
+		sudo apt install jenkins
+	then
+	fi
+	
+	read -p "Install tomcat (java 8>=) ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	
+		cd ~/temp
+		wget -O tomcat.tar.gz "http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.11/bin/apache-tomcat-9.0.11.tar.gz"
+		sudo mkdir /opt/tomcat
+		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1
 
-# maven 
-sudo apt-get install maven -y
+	then
+	fi
 
+
+fi
 
 
 ####################################################################################
-
-
-
-
+#C and C++ 
 read -p "Install C and Cpp tools? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo install Cpp tools :
-	# Installing C++
+	# Installing C compiler
 	sudo apt-get install gcc
+	# Installing C++ compiler
 	sudo apt-get install g++
 	
 	read -p "Install IDE C/Cpp (Netbeans) ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		#Install Netbeans
+	fi
 
 fi
+
+####################################################################################
+#Python#need backport for debian
+
+
+read -p "Install C and Cpp tools? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+sudo apt-get install -y python3-pip
+sudo apt-get install -y python2-pip
+udo apt-get install -y python-dev
+sudo apt-get install -y python-pip
+sudo apt-get install -y python3
+sudo apt-get install -y idle
+sudo apt-get install -y libkrb5-dev
+sudo apt-get install -y -f python3.7
+
+fi
+
+
+########################################################################
+# Installing crypto packagess
+read -p "cryptography package ? yes or no " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	echo install cryptography libs :
+	sudo apt-get install libssl-dev 
+	sudo apt-get install libffi-dev 
+	#with Python
+	pip install cryptography
+
+else
+	echo no cryptography libs
+
+fi
+
+
+########################################################################
+# Installing crypto packagess
+read -p "cryptography package ? yes or no " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	
+        sudo apt-get install libgl1
+        sudo apt-get install libgl1-mesa-dev 
+
+        
+else
+	echo no cryptography libs
+
+fi
+
+
+
+
 
 
 
@@ -162,28 +268,6 @@ e.sh
 
 
 
-####################################################################################
-#JAVA
-
-# Installing JDK and JRE
-sudo apt-get install -y default-jre
-sudo apt-get install -y default-jdk
-
-# maven 
-sudo apt-get install maven -y
-
-####################################################################################
-#JAVA
-
-# Installing JDK and JRE
-sudo apt-get install -y default-jre
-sudo apt-get install -y default-jdk
-
-# maven 
-sudo apt-get install maven -y
-
-
-
 
 # Gulp - an automated task runner
 sudo npm install -g gulp-cli
@@ -196,18 +280,6 @@ sudo apt-get update
 sudo apt-get upgrade
 #Curl, Python - Some random useful stuff
 #sudo apt-get install -y curl python-software-properties
-
-####################################################################################
-#Python#need backport for debian
-sudo apt-get install -y python3-pip
-sudo apt-get install -y python2-pip
-udo apt-get install -y python-dev
-sudo apt-get install -y python-pip
-sudo apt-get install -y python3
-sudo apt-get install -y idle
-sudo apt-get install -y libkrb5-dev
-sudo apt-get install -y -f python3.7
-
 
 
 
@@ -232,6 +304,7 @@ then
         sudo apt-get install aptitude
         sudo apt-get install net-tools
         sudo apt-get install curl 
+	sudo apt-get install rsync
 
 else
 	echo no tools
@@ -410,6 +483,7 @@ p3x-onenote &
 #Teamviewer
  cd ~/temp && wget -O teamviewer.deb https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
 sudo dpkg -i teamviewer.deb
+sudo apt-get install -f
 
 
 #dropbox
@@ -439,6 +513,7 @@ sudo rm android.tar.gz
 #VsCode
 #URL 09/2019
 cd ~/temp && wget -O vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868 && sudo dpkg -i vscode.deb
+sudo apt-get install -f
 
 #intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28)
 cd ~/temp && wget -O intelliJ.tar.gz https://download.jetbrains.com/idea/ideaIC-2019.2.2.tar.gz\?_ga\=2.168603234.2104405915.1568068392-720424917.1568068392 
@@ -449,6 +524,7 @@ sudo mv idea-IC-192.6603.28 /opt
 #Mysql
 wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
 sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb
+sudo apt-get install -f
 
 #Workbench 
 wget -O workbench.deb https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.17-1ubuntu18.04_amd64.deb
