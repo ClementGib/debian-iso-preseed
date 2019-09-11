@@ -25,5 +25,5 @@ AND
 # info
 https://www.debian.org/releases/stable/amd64/apbs01.fr.html
 
-the `preseed.cfg.example` file is a copy of http://www.debian.org/releases/buster/example-preseed.txt
+`preseed.cfg.example` http://www.debian.org/releases/buster/example-preseed.txt
 
