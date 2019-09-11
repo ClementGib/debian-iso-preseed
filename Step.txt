@@ -1,3 +1,5 @@
+#Debgen source.list
+
 1.Start "sudo bash start.sh"
 	Type password of root and user
 

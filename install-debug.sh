@@ -11,8 +11,8 @@ echo install and config for $User debug version:
 #Java
 Tomcat=https://www.apache.org/dist/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24-deployer.tar.gz
 Payara=https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.193/payara-5.193.zip
-Netbeans_java=lien
-Eclipse_java=lien
+Netbeans=lien
+Eclipse=lien
 #if specific version
 JDK=url
 JRE=url
@@ -42,7 +42,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get full-upgrade
 
-#temps dir for install
+#temp dir for install
 mkdir ~/temp
 
 #Location of softwares
@@ -77,7 +77,10 @@ then
         sudo apt-get install build-essential 
         sudo apt-get install automake 
         sudo apt-get install autoconf
-  	
+        sudo apt-get install libxmu-dev
+        sudo apt-get install libxi-dev   
+        sudo apt-get install checkinstall
+        
 	read -p "Install common independent software package (usefull for the rest) ? yes or no " -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
@@ -110,60 +113,56 @@ then
 		sudo apt-get install oracle-java12-installer
 		sudo apt update
 	fi
+	
 	read -p "Install java 11 ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
-			
+	then		
 		# Installing JDK and JRE 11
 		sudo apt install openjdk-11-jdk
 		sudo apt install openjdk-11-jre
 		sudo apt update
 	fi
 	
-	
 	read -p "Install java 8 ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
-	
+	then
 		# Installing JDK and JRE 8
 		sudo apt install openjdk-8-jdk
 		sudo apt install openjdk-8-jre
 		sudo apt update
-	then
 	fi
 	
 	read -p "Install maven ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		sudo apt-get install maven
-		
+    fi
+    
 	read -p "Install jenkins (java 8>=) ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
-	
-		sudo apt install jenkins
 	then
+		sudo apt install jenkins
+	
 	fi
 	
 	read -p "Install tomcat (java 8>=) ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
-	
+	then
 		cd ~/temp
 		wget -O tomcat.tar.gz $Tomcat
 		sudo mkdir /opt/tomcat
 		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1
-
-	then
 	fi
 
 	read -p "Install payara ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
-	
+	then
 		sudo update-alternatives --config java
 		cd ~/temp
 		wget -O tomcat.tar.gz $Tomcat
 		sudo mkdir /opt/tomcat
-		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1
-	then
+		sudo tar -xzvf tomcat.tar.gz -C /opt/tomcat --strip-components=1	
 	fi
-
 
 fi
 
@@ -179,9 +178,7 @@ then
 	# Installing C compiler
 	sudo apt-get install gcc
 	# Installing C++ compiler
-	sudo apt-get install g++
-	
-
+	sudo apt-get install g++	
 fi
 
 ########################################################################

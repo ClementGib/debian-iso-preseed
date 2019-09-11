@@ -1,4 +1,15 @@
 #!/bin/bash
 
-touch /etc/apt/sources.list.d/dropbox.list
-echo deb [arch=i386,amd64] http://linux.dropbox.com/debian jessie main > /etc/apt/sources.list.d/dropbox.list
+
+
+
+read -p "Are you sure? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo yes
+else
+	echo no
+fi
+
+
