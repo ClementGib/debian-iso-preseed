@@ -32,7 +32,7 @@ SublimeTxt=https://download.sublimetext.com/sublimehq-pub.gpg
 VsCode=vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868
 #URL MondoDB 09/2019 
 Mongodb=https://www.mongodb.org/static/pgp/server-4.2.asc
-
+Slack=https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
 #if specific version
 #JDK=url
 #JRE=url
