@@ -10,7 +10,7 @@
 
 4. customize with comment or uncomment:
 `auto-install.sh script `(auto install without touching)
-OR 
+AND 
 `install-debug.sh `(Install step by step with choices)
 
 5. build the custom iso:
