@@ -1,5 +1,6 @@
 #!/bin/bash
 #DEFAULT DEBIAN install - config
+
 User=$1
 echo install and config for $User debug version:
 
@@ -9,18 +10,18 @@ echo install and config for $User debug version:
 ########################################################################
 #Config URL and Variable
 #Java
+#URL Tomcat 09/2019 
 Tomcat=https://www.apache.org/dist/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24-deployer.tar.gz
+#URL Payara 09/2019 
 Payara=https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.193/payara-5.193.zip
-NodeV=https://deb.nodesource.com/setup_12.x
+#URL NodeVX 09/2019 
+NodeVX=https://deb.nodesource.com/setup_12.x
+#URL ZSH 09/2019 
 ZSH=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-Netbeans=lien
-Eclipse=lien
-#if specific version
-JDK=url
-JRE=url
-
-Netbeans=lien
-
+#URL Netbeans 09/2019 
+Netbeans=https://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh
+#URL Eclipse 09/2019 
+Eclipse=http://eclipse.mirror.garr.it/mirrors/eclipse//oomph/epp/2019-06/R/eclipse-inst-linux64.tar.gz
 #URL ANDROID 09/2019 
 Android=https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz
 #URL IntelliJ 09/2019 
@@ -29,6 +30,9 @@ SublimTxt=lien
 VsCode=lien
 Mongodb=lien
 
+#if specific version
+JDK=url
+JRE=url
 
 
 ########################################################################
@@ -85,6 +89,8 @@ then
         sudo apt-get install libxmu-dev
         sudo apt-get install libxi-dev   
         sudo apt-get install checkinstall
+	
+	
         
 	read -p "Install common independent software package (usefull for the rest) ? yes or no " -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
@@ -214,7 +220,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#Nodejs and NVM
 	sudo apt-get install -y curl software-properties-common
-	curl -sL $NodeV | sudo bash -
+	curl -sL $NodeVX | sudo bash -
 	sudo apt-get install -y nodejs
 
 	#nodemon	
@@ -254,6 +260,9 @@ then
 	echo install cryptography libs :
 	sudo apt-get install libssl-dev 
 	sudo apt-get install libffi-dev 
+	sudo apt-get install dirmngr
+	sudo apt-get install apt-transport-https 
+	
 	#with Python
 	sudo pip install cryptography
 	echo cryptography libs installed
@@ -278,6 +287,7 @@ then
 	sudo apt-get install lib32z1-dev
 	sudo apt-get install lib32stdc++6
 	echo OPENGL and lib32 installed
+	
 	
         
 else
@@ -454,7 +464,8 @@ fi
 ########################################################################
 read -p "Install dictionary ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
-then
+thenapt-transport-https dirmngr
+
 	# Dictionary Client and Server with Thesaurus
 	sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 	sudo apt-get install dict
@@ -484,65 +495,74 @@ fi
 read -p "Install Netbeans ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-		#Install Netbeans
-		echo Netbeans : opt/android-studio >> locate.txt 
+		
+	#Install Netbeans
+	cd ~/temp
+	wget -O netbeans8.sh $Netbeans
+	bash netbeans8.sh
+	echo End of netbeans installation
+	cd -
+	
 fi
 
-read -p "Install Eclipse ? yes or no" -n 1 -r
+read -p "Dowload eclipse ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-		#Install Eclipse
-		#echo Eclipse : opt/android-studio >> locate.txt 
+	while [[ $REPLY =~ ^[Yy]$ ]]
+	do
+	#Install Eclipse
+	cd ~/temp
+	wget -O eclipse.tar.gz $Eclipse
+	tar -xvf eclipse.tar.gz
+		
+	read -p "Start eclipse installer ? yes or no " -n 1 -r
+	while [[ $REPLY =~ ^[Yy]$ ]]; do
+		cd eclipse-installer
+		./eclipse-inst
+		#Start runner
+		echo End of eclipse installation
+		cd -
+		read -p "Install eclipse again ? yes or no " -n 1 -r
+		#for different eclipse verions
+	done
+				
 fi
 
-read -p "Install Netbeans Java ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-		#Install Netbeans
-		echo Netbeans : opt/android-studio >> locate.txt 
-fi
-
-read -p "Install Eclipse Java ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-		#Install Netbeans
-		echo Eclipse : opt/android-studio >> locate.txt 
-fi
 
 read -p "Install Android studio ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-		#Install Netbeans
-		#AndroidStudio (need to create shortcut /opt/android-studio)
-		sudo apt-get install -y lib32stdc++6
+	#Install Netbeans
+	#AndroidStudio (need to create shortcut /opt/android-studio)
+	sudo apt-get install -y lib32stdc++6
 		
-		cd ~/temp && wget -O android.tar.gz $Android 
-		tar -xvf android.tar.gz
-		sudo mv android-studio /opt/
-		sudo rm android.tar.gz
-		#Location of softwares file
-		echo Android-Studio : opt/android-studio >> locate.txt 
+	cd ~/temp && wget -O android.tar.gz $Android 
+	tar -xvf android.tar.gz
+	sudo mv android-studio /opt/
+	sudo rm android.tar.gz
+	#Location of softwares file
+	echo Android-Studio : opt/android-studio >> locate.txt 
 fi
 
 read -p "Install IntelliJ Community ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-		#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
-		cd ~/temp && wget -O intelliJ.tar.gz $IntelliJ 
-		tar -xvf intelliJ.tar.gz
-		sudo mv idea-IC-192.6603.28 /opt
-		#Location of softwares file
-		echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
+	#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
+	cd ~/temp && wget -O intelliJ.tar.gz $IntelliJ 
+	tar -xvf intelliJ.tar.gz
+	sudo mv idea-IC-192.6603.28 /opt
+	#Location of softwares file
+	echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
 fi
 
 
 read -p "Install Arduino IDE ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-		#Arduino
-		sudo apt-get install arduino
-		#Location of softwares file
-		echo Arduino : etc/Arduino >> locate.txt 
+	#Arduino
+	sudo apt-get install arduino
+	#Location of softwares file
+	echo Arduino : etc/Arduino >> locate.txt 
 fi
 
 
@@ -561,7 +581,7 @@ then
 	sh get-docker.sh
 	cd -
 	# Docker-compose
-	sudo pip install docker-compose -y
+	sudo pip install docker-compose
 	
 	read -p "Install Kubernetes ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
