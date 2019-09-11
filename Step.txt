@@ -1,5 +1,5 @@
 #Debgen source.list
-
+#setopt +o nomatch (all with *)
 1.Start "sudo bash start.sh"
 	Type password of root and user
 
