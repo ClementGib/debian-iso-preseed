@@ -29,11 +29,17 @@ IntelliJ=https://download.jetbrains.com/idea/ideaIC-2019.2.2.tar.gz\?_ga\=2.1686
 #URL Sublimetext 09/2019 
 SublimeTxt=https://download.sublimetext.com/sublimehq-pub.gpg
 #URL VsCode 09/2019 
-VsCode=vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868
+VsCode=vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868 
 #URL MondoDB 09/2019 
-Mongodb=https://www.mongodb.org/static/pgp/server-4.2.asc
+Mongodb=https://www.mongodb.org/static/pgp/server-4.2.asc 
 #URL Slack 09/2019
 Slack=https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
+#URL Dropbox 09/2019
+Dropbox=git://github.com/dropbox/dropbox-sdk-python.git
+#URL Mysql 09/2019
+Mysql=http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
+#URL Mysql Workbench 09/2019
+MyWorkbench=https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.17-1ubuntu18.04_amd64.deb
 #if specific version
 #JDK=url
 #JRE=url
@@ -96,7 +102,8 @@ then
         sudo apt-get install libxmu-dev
         sudo apt-get install libxi-dev   
         sudo apt-get install checkinstall
-	
+	sudo apt-get install apt-transport-https
+	sudo apt-get install dirmngr
 	
         
 	read -p "Install common independent software package (usefull for the rest) ? yes or no " -n 1 -r
@@ -154,7 +161,6 @@ then
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		sudo apt-get install maven
-    fiEOF (End Of File).
     
 	read -p "Install jenkins (java 8>=) ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
@@ -214,15 +220,16 @@ then
 	sudo apt-get install idle
 	sudo apt-get install curl python-software-properties
 	sudo apt update
+	sudo apt upgrade
 	
 
 fi
 
 ########################################################################
-#	                 	   NODE	                               #
+#	                 	   NODEJS                               #
 ########################################################################
 
-read -p "Install Python? yes or no" -n 1 -r
+read -p "Install Nodejs? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#Nodejs and NVM
@@ -258,6 +265,8 @@ fi
 sudo apt-get update
 sudo apt-get upgrade
 
+
+
 ########################################################################
 #	                       Cryptography			       #
 ########################################################################
@@ -282,10 +291,10 @@ fi
 
 
 ########################################################################
-#	                 	Libs usefull	                       #
+#	                 	usefull Libs 	                       #
 ########################################################################
-# Installing crypto packagess
-read -p "OPENGL lib ? yes or no " -n 1 -r
+# Installing libs 
+read -p "Install usefull libs ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	
@@ -295,10 +304,10 @@ then
 	sudo apt-get install lib32z1-dev
 	sudo apt-get install lib32stdc++6
 	echo OPENGL and lib32 installed
-	sudo apt-get install -y clementine
+
         
 else
-	echo no OPENGL libs
+	echo no usefull libs 
 
 fi
 
@@ -320,7 +329,7 @@ then
 		cp vim/.* ~/
 		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		echo VIM : ~/.vim >> locate.txt 
+		echo VIM config : ~/.vim >> locate.txt 
 	fi
 else
 	echo no vim config
@@ -368,16 +377,15 @@ then
         sudo apt-get install aptitude
         sudo apt-get install net-tools
         sudo apt-get install curl 
-	sudo apt-get install git
 	sudo apt-get install filezilla
 	sudo apt-get install smartmontools 
 	sudo apt-get install ethtool
-	sudo apt-get install -y thunderbird
+	sudo apt-get install thunderbird
 	#dual boot
-	sudo apt-get install -y grub-customizer
+	sudo apt-get install grub-customizer
 	#  Notes
-	sudo apt-get install -y xpad
-	sudo apt-get install -y basket
+	sudo apt-get install xpad
+	sudo apt-get install basket
 	
 	#Usually installed by default 
 	#sudo apt-get install libreoffice
@@ -447,7 +455,7 @@ then
 	#Need bask port Debian (backport)
 	sudo apt-get update
 
-	sudo apt-get install -y tlp tlp-rdw 
+	sudo apt-get install tlp tlp-rdw 
 	sudo tlp start
 	sudo tlp stat
 else
@@ -459,7 +467,7 @@ fi
 ########################################################################
 read -p "Install dictionary ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
-thenapt-transport-https dirmngr
+then
 
 	# Dictionary Client and Server with Thesaurus
 	sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
@@ -487,79 +495,82 @@ fi
 #	           	          IDE			               #
 ########################################################################
 #IDE
-read -p "Install Netbeans ? yes or no" -n 1 -r
+read -p "Install IDE (Java, c++, web, android ...) ? yes or no" -n 1 -r
 sudo apt-get install -y clementine
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+	read -p "Install Netbeans ? yes or no" -n 1 -r
+	sudo apt-get install -y clementine
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
 		
-	#Install Netbeans
-	cd ~/temp
-	wget -O netbeans8.sh $Netbeans
-	bash netbeans8.sh
-	echo End of netbeans installationgnupg 
-	cd -
-	
-fi
-
-read -p "Dowload eclipse ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	while [[ $REPLY =~ ^[Yy]$ ]]
-	do
-	#Install Eclipse
-	cd ~/temp
-	wget -O eclipse.tar.gz $Eclipse
-	tar -xvf eclipse.tar.gz
-		
-	read -p "Start eclipse installer ? yes or no " -n 1 -r
-	while [[ $REPLY =~ ^[Yy]$ ]]; do
-		cd eclipse-installer
-		./eclipse-inst
-		#Start runner
-		echo End of eclipse installation
+		#Install Netbeans
+		cd ~/temp
+		wget -O netbeans8.sh $Netbeans
+		bash netbeans8.sh
+		echo End of netbeans installationgnupg 
 		cd -
-		read -p "Install eclipse again ? yes or no " -n 1 -r
-		#for different eclipse verions
-	done
-				
-fi
+	
+	fi
 
-
-read -p "Install Android studio ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	#Install Netbeans
-	#AndroidStudio (need to create shortcut /opt/android-studio)
-	sudo apt-get install -y lib32stdc++6
+	read -p "Dowload eclipse ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#Install Eclipse
+		cd ~/temp
+		wget -O eclipse.tar.gz $Eclipse
+		tar -xvf eclipse.tar.gz
 		
-	cd ~/temp && wget -O android.tar.gz $Android 
-	tar -xvf android.tar.gz
-	sudo mv android-studio /opt/
-	sudo rm android.tar.gz
-	#Location of softwares file
-apt-transport-https dirmngr
-	echo Android-Studio : opt/android-studio >> locate.txt 
+		read -p "Start eclipse installer ? yes or no " -n 1 -r
+		while [[ $REPLY =~ ^[Yy]$ ]]; do
+			cd eclipse-installer
+			./eclipse-inst
+			#Start runner
+			echo End of eclipse installation
+			cd -
+			read -p "Install eclipse again ? yes or no " -n 1 -r
+			#for different eclipse verions
+		done
+				
+	fi
+
+
+	read -p "Install Android studio ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#Install Netbeans
+		#AndroidStudio (need to create shortcut /opt/android-studio)
+		sudo apt-get install -y lib32stdc++6
+		cd ~/temp && wget -O android.tar.gz $Android 
+		tar -xvf android.tar.gz
+		sudo mv android-studio /opt/
+		sudo rm android.tar.gz
+		#Location of softwares file
+
+		echo Android-Studio : opt/android-studio >> locate.txt 
+	fi
+
+	read -p "Install IntelliJ Community ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
+		cd ~/temp && wget -O intelliJ.tar.gz $IntelliJ 
+		tar -xvf intelliJ.tar.gz
+		sudo mv idea-IC-192.6603.28 /opt
+		#Location of softwares file
+		echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
+	fi
+
+	read -p "Install Arduino IDE ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#Arduino
+		sudo apt-get install arduino
+		#Location of softwares file
+		echo Arduino : etc/Arduino >> locate.txt 
+	fi
 fi
 
-read -p "Install IntelliJ Community ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
-	cd ~/temp && wget -O intelliJ.tar.gz $IntelliJ 
-	tar -xvf intelliJ.tar.gz
-	sudo mv idea-IC-192.6603.28 /opt
-	#Location of softwares file
-	echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
-fi
-
-read -p "Install Arduino IDE ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	#Arduino
-	sudo apt-get install arduino
-	#Location of softwares file
-	echo Arduino : etc/Arduino >> locate.txt 
-fi
 
 ########################################################################
 #	           	          DOCKER    			       #
@@ -598,9 +609,10 @@ read -p "Install multimedia ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#Multimedia
-	sudo apt-get install -y vlc
-	sudo apt-get install -y kazam
-	sudo apt-get install -y clementine
+	sudo apt-get install vlc
+	sudo apt-get install kazam
+	sudo apt-get install clementine
+	sudo apt-get install audacity
 fi
 
 
@@ -625,8 +637,10 @@ read -p "Install Slack ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#Slack 
+	cd ~/temp
 	wget -O Slack.deb $Slack
 	sudo dpkg -i Slack.deb
+	cd -
 fi
 
 
@@ -640,6 +654,7 @@ then
 	cd ~/temp && wget -O teamviewer.deb https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
 	sudo dpkg -i teamviewer.deb
 	sudo apt-get install -f
+	cd -
 fi
 
 ########################################################################
@@ -653,9 +668,10 @@ then
 	#cd ~/temp && wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2019.02.14_amd64.deb
 	#sudo ~/temp/.dropbox-dist/dropboxd
 	cd ~/temp
-	git clone git://github.com/dropbox/dropbox-sdk-python.git
+	git clone $Dropbox
 	cd dropbox-sdk-python
 	sudo python setup.py install
+	cd -
 fi
 
 
@@ -682,24 +698,24 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#VsCode
 	#URL 09/2019
-	cd ~/temp && wget -O vscode.deb https://go.microsoft.com/fwlink/\?LinkID\=760868 && sudo dpkg -i vscode.deb
+	cd ~/temp && wget -O $VsCode && sudo dpkg -i vscode.deb
 	sudo apt-get install -f
 fi
 
 ########################################################################
 #	           	          LAMPP				       #
 ########################################################################
-read -p "Install multimedia ? yes or no" -n 1 -r
+read -p "Install "LAMPP" (Apache and/or MySQL and/or PHP and/or Phpadmin) ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#LAMPP:
 	#Mysql
-	wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
-	sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb
+	wget -O mysql-config.deb $Mysql
+	sudo dpkg -i mysql-config.deb
 	sudo apt-get install -f
 
 	#Workbench 
-	wget -O workbench.deb https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.17-1ubuntu18.04_amd64.deb
+	wget -O workbench.deb $MyWorkbench
 
 	#Apache server
 	#sudo apt-get install apache2 apache2-doc apache2-npm-prefork apache2-utils libexpat1 ssl-cert -y
@@ -711,6 +727,7 @@ then
 	#sudo apt-get install phpmyadmin
 fi
 
+
 ########################################################################
 #	           	       MongoDB				       #
 ########################################################################
@@ -720,8 +737,9 @@ then
 	# Mongodb, Installing and starting server
 	sudo apt install gnupg
 	cd ~/temp
-	wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
-	echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+	wget -qO - $Mongodb | sudo apt-key add -
+	#Already done
+	#echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
 	sudo apt-get update
 	sudo apt-get install -y mongodb-org
 
