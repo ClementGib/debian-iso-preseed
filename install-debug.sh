@@ -1,4 +1,4 @@
-#!/bin/bash
+1#!/bin/bash
 #DEFAULT DEBIAN install - config
 
 User=$1
@@ -47,14 +47,20 @@ MyWorkbench=https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-co
 ########################################################################
 #	                    UPDATE AND UPGRADE		               #
 ########################################################################
-#DEFAULT SOURCES LIST OF DEBIAN BUSTER 
-echo add default buster source.list
-sudo chown root source.list
-sudo cp sources.list /etc/apt/sources.list
-# /!\ NEED TO ADAPT FOR UBUNTU /!\
 
-sudo bash PubKey.sh
+read -p "Source list config and Public Key ? yes or no " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
 
+
+	#DEFAULT SOURCES LIST OF DEBIAN BUSTER 
+	echo add default buster source.list
+	sudo chown root source.list
+	sudo cp sources.list /etc/apt/sources.list
+	# /!\ NEED TO ADAPT FOR UBUNTU /!\
+
+	sudo bash PubKey.sh
+fi
 
 #UPDATE UPGRADE
 #echo Update et full Upgrade 
@@ -161,6 +167,7 @@ then
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		sudo apt-get install maven
+	fi
     
 	read -p "Install jenkins (java 8>=) ? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
