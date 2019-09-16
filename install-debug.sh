@@ -1,6 +1,7 @@
 1#!/bin/bash
 #DEFAULT DEBIAN install - config
 
+
 User=$1
 echo install and config for $User debug version:
 
