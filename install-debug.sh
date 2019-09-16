@@ -757,3 +757,8 @@ fi
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
+########################################################################
+#	           	    KDE DESKTOP CUSTOM		    	       #
+########################################################################
+sudo apt-get install latte-dock 
+
