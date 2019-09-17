@@ -1,3 +1,6 @@
+mkdir ~/.pubkey
+cd ~/.pubkey
+
 sudo bash -c 'apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys EAC0D406E5D79A82ADEEDFDFB76E53652D87398A
 wget http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb && dpkg -i deb-multimedia-keyring_2016.8.1_all.deb
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
@@ -18,3 +21,4 @@ wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key a
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -'
 
+cd -

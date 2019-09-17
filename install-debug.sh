@@ -1,6 +1,11 @@
 1#!/bin/bash
 #DEFAULT DEBIAN install - config
 
+#SOURCE LIST FTP.FR (FRENCH) DEFAULT
+sudo cp sources.list-empty /etc/apt/sources.list
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install build-essential
 
 User=$1
 echo install and config for $User debug version:
@@ -54,12 +59,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
 
+	sudo apt-get install gpg
+	sudo apt-get install curl
+
 	#DEFAULT SOURCES LIST OF DEBIAN BUSTER 
 	echo add default buster source.list
-	sudo chown root source.list
 	sudo cp sources.list /etc/apt/sources.list
 	# /!\ NEED TO ADAPT FOR UBUNTU /!\
-
 	sudo bash PubKey.sh
 fi
 
@@ -103,7 +109,6 @@ read -p "Install essential package (need for the rest) ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo install essential package:
-        sudo apt-get install build-essential 
         sudo apt-get install automake 
         sudo apt-get install autoconf
         sudo apt-get install libxmu-dev
@@ -347,22 +352,6 @@ sudo apt-get update
 sudo apt-get upgrade
 
 
-########################################################################
-#	                   Install ZSH config		               #
-########################################################################
-# Zsh
-read -p "Install zsh and config with Oh-My-Zsh ? yes or no" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	sudo apt-get install zsh
-	sh -c "$(curl -fsSL $ZSH)"
-	#cp config
-	sh zsh/fonts/install.sh 
-	cp zsh/.* ~/
-	echo ZSH : ~/.zsh >> locate.txt 
-else
-	echo no zsh config
-fi
 
 ########################################################################
 #	                  Install usefull tools 	               #
@@ -371,20 +360,20 @@ fi
 read -p "Install usefull tools ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	echo Install tools :	
-        sudo apt-get install terminator
-        sudo apt-get install gparted
-        sudo apt-get install w3m
-        sudo apt-get install git
+	echo Install tools :
+	sudo apt-get install terminator
+	sudo apt-get install gparted
+	sudo apt-get install w3m
+	sudo apt-get install git
 	sudo apt-get install xclip
 	sudo apt-get install locate
 	sudo apt-get install find
-        sudo apt-get install net-tools
-        sudo apt-get install check 
-        sudo apt-get install flex 
-        sudo apt-get install aptitude
-        sudo apt-get install net-tools
-        sudo apt-get install curl 
+	sudo apt-get install net-tools
+	sudo apt-get install check 
+	sudo apt-get install flex
+	sudo apt-get install aptitude
+	sudo apt-get install net-tools
+	sudo apt-get install curl 
 	sudo apt-get install filezilla
 	sudo apt-get install smartmontools 
 	sudo apt-get install ethtool
@@ -401,9 +390,28 @@ then
 	#sudo apt-get install firefox
 	#sudo apt-get install ssh
 	#sudo apt-get install file
-
 else
 	echo no usefull tools
+fi
+
+
+
+########################################################################
+#	                   Install ZSH config		               #
+########################################################################
+# Zsh
+read -p "Install zsh and config with Oh-My-Zsh ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	echo zsh install
+	sudo apt-get install zsh
+	sh -c "$(curl -fsSL $ZSH)"
+	#cp config
+	sh zsh/fonts/install.sh 
+	cp zsh/.* ~/
+	echo ZSH : ~/.zsh >> locate.txt 
+else
+	echo no zsh config
 fi
 
 
