@@ -22,4 +22,7 @@
 -Regional Settings on British or US Language
 
 
+
+-On the desktop add application menu bar with : Widget System Tray, Application Menu and digital clock, use a spacer and lock widget
+
 -Latte Custome : 
