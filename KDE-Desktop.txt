@@ -25,4 +25,14 @@
 
 -On the desktop add application menu bar with : Widget System Tray, Application Menu and digital clock, use a spacer and lock widget
 
--Latte Custome : 
+-Latte Custome :
+
+
+
+
+Terminator zsh : 
+    git clone https://github.com/powerline/fonts
+    cd fonts
+    ./install.sh from terminal / command line
+    Open iTerm2->Preferences->Profiles->Change Font-> 12pt Meslo LG S DZ Regular for Powerline
+
