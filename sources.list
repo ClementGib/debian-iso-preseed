@@ -4,17 +4,21 @@
 #------------------------------------------------------------------------------#
 
 ###### Debian Main Repos
-deb http://ftp.fr.debian.org/debian/ stable main contrib non-free
-deb-src http://ftp.fr.debian.org/debian/ stable main contrib non-free
+deb http://ftp.fr.debian.org/debian/ buster main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ buster main contrib non-free
 
-deb http://ftp.fr.debian.org/debian/ stable-updates main contrib non-free
-deb-src http://ftp.fr.debian.org/debian/ stable-updates main contrib non-free
+deb http://ftp.fr.debian.org/debian/ buster-updates main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ buster-updates main contrib non-free
 
 deb http://ftp.fr.debian.org/debian-security/ buster/updates main contrib non-free
 deb-src http://ftp.fr.debian.org/debian-security/ buster/updates main contrib non-free
 
 deb http://ftp.debian.org/debian buster-backports main
 deb-src http://ftp.debian.org/debian buster-backports main
+
+deb http://http.us.debian.org/debian/ sid main
+deb http://ftp.fr.debian.org/debian/ sid main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ sid main contrib non-free #Added by software-properties
 
 #------------------------------------------------------------------------------#
 #                      UNOFFICIAL  REPOS                       
@@ -24,9 +28,6 @@ deb-src http://ftp.debian.org/debian buster-backports main
 ###Adapta GTK Theme
 deb http://ppa.launchpad.net/tista/adapta/ubuntu bionic main
 deb-src http://ppa.launchpad.net/tista/adapta/ubuntu bionic main
-
-###Debian Multimedia
-deb [arch=amd64,i386] https://www.deb-multimedia.org buster main non-free
 
 ###Docker CE
 deb [arch=amd64] https://download.docker.com/linux/debian buster stable

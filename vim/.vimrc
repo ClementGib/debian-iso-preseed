@@ -13,7 +13,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic'
 Plug 'Valloric/YouCompleteMe'
-Plug 'Raimondi/delimitMate'"
+Plug 'Raimondi/delimitMate'
+Plug 'nathanaelkane/vim-indent-guides'
 
 
 "
@@ -88,12 +89,20 @@ set background=dark
 set number
 
 " indentation intelligente"
-set smartindent
+"set smartindent"
+set cursorcolumn
+set cursorline
 
 "indentation lignes"
 :set list
 
 " sourie "
-set mouse=a
+set mouse-=a
 
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
+" copy and paste
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa

@@ -1,2 +1,1 @@
 Location of softwares:
-ZSH : /home/xzem/.zsh

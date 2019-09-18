@@ -1,0 +1,25 @@
+########################################
+#              CUSTOM KDE              #
+########################################
+-WORKSPACE THEME : 
+  1. Look and feel : McMojave
+  2. Desktop Theme : McMojave
+  3. Cursor Theme : Breeze Snow 
+  4. Splash Screen : Breeze Chameleon
+-COLOURS : McMojave
+-Icons : La Capitaine
+-Application Style : 
+  1. Widget Style : Breeze and configure transparency to 80%
+  2. Windows Decoration : Breezemite 
+  3. GNOME App Style (GTK) : GTK2 & 3 style on Juno style, Cursor Breeze Snow and Icon Tjeùe a,d fallback theme on La Capitaine.
+-Desktop Behavious
+  1. Workspace : Double-clic to open... 
+  2. Desktop effect : Magic Lamp On, Sheet On and Wobbly Windows On
+
+-Configure application Menu : Right click on the (burk) Apple icon to configure and change to a debian logo (Y)
+-Basic konsol : Edit current profile > Appearance > Get Aritim Dark and edit to 5% transparency
+
+-Regional Settings on British or US Language
+
+
+-Latte Custome : 
