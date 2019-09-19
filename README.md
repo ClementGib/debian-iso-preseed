@@ -40,30 +40,32 @@ BUILD ISO IMAGE:
 INSTALL PACKAGES :
 
 
-|     Name      |     Type      |     Detail    |
-| ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
 
-start.sh (start file for sudo right and choose auto or debug mode),
-install.sh (auto install),
-install-debug.sh (install with choice),
-log.txt (logs of scripts ),
-source.list (source list config for buster with package net PubKey),
-PubKey.sh (Script for add pubkey for source list),
-source.list-empty (basic source list for debian buster),
-sudoers ("empty" file of sudoers),
-.bashrc (with my config of bash),
-vim directory (with my config of vim),
-zsh directory (with my config of zsh),
-test.sh (Unit testing file),
+|	      Name 		|      Type     |     			    Detail				|
+| ----------------------------- | ------------- | ------------------------------------------------------------- |
+|start.sh			| Script bash   | Start file for sudo right and choose auto or debug mode  	|
+|install.sh  			| Script bash   | Auto install script 						|
+|install-debug.sh		| Script bash   | install with choice						|
+|test.sh			| Script bash   | Unit testing file						|
+|PubKey.sh  			| Script bash   | Script for add pubkey for source list				|
+|log.txt		        | Text file     | logs of scripts	 					|
+|source.list			| file of config| File of config apt : /etc/apt/source.list		 	|
+|source.list-empty 		| file of config| "basic" file of config apt : /etc/apt/source.list  		|
+|sudoers		        | file of config| "empty" file of config for sudoers 	 			|
+|.bashrc 			| file of config| My config of bash 						|
+|vim 				| Directory     | My config of Vim		 				|
+|zsh 				| Directory     | My config of ZSH						|
+
 
 DOC :
 
-|     Name      |     Type      |     Detail    |
-| ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
+
+|     	  Name     		|     Type      |     Detail    			 |
+| ----------------------------- | ------------- | -------------------------------------- |
+|extract-iso.sh 		| Script bash   | Extractor of ISO file  		 |
+|build-iso.sh   		| Script bash   | Builder of your ISO after modification |
+|preseed.cfg.example		| cfg file      | Basic exemple of preseed file		 |
+|isolinux.cfg.autostart-example | cfg file      | Basic exemple of isolinux file 	 |
 IMAGE directory (contain some pictures for fix source.list KDE problems),
 KDE-Desktop.txt file,
 README.md,
