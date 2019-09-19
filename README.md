@@ -21,10 +21,10 @@ AND
 	
 6. make bootable your iso on USB-KEY, CD-ROM (or PXE server)
 
-7. Get the debian-iso-preseed (in a USB for example) and installl the firmware : 
-7.1 sudo dmesg | grep firmware, 7.2 apt-cache search NAME_OF_FIRMWARE (NAME of missing firmware), 7.3 apt-get install NAME_OF_PACKAGE
+7. install the firmware : 
+7.1 sudo dmesg | grep firmware, 7.2 apt-cache search NAME_OF_FIRMWARE (NAME of missing firmware), 7.3 apt-get install NAME_OF_PACKAGE, 7.4 REBOOT !
 
-8. execute start.sh:
+8. Get the debian-iso-preseed (in a USB for example) and execute start.sh:
 8.1. Sudoer config for user
 8.2. Execution of install.sh (auto install of every package) OR install-debug.sh for choose which package you wish.
 8.3. If you have some dependencies problem correct your source.list file and start it again (with source.list provided for example)
