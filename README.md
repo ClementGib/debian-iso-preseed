@@ -27,12 +27,24 @@ AND
 
 # Contains : 
 BUILD ISO IMAGE:
-extract-iso.sh,
-build-iso.sh,
-preseed.cfg.example,
-isolinux.cfg.autostart-example,
+
+|     	  Name     		|     Type      |     Detail    			 |
+| ----------------------------- | ------------- | -------------------------------------- |
+|extract-iso.sh 		| Script bash   | Extractor of ISO file  		 |
+|build-iso.sh   		| Script bash   | Builder of your ISO after modification |
+|preseed.cfg.example		| cfg file      | Basic exemple of preseed file		 |
+|isolinux.cfg.autostart-example | cfg file      | Basic exemple of isolinux file 	 |
+
+
 
 INSTALL PACKAGES :
+
+
+|     Name      |     Type      |     Detail    |
+| ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+
 start.sh (start file for sudo right and choose auto or debug mode),
 install.sh (auto install),
 install-debug.sh (install with choice),
@@ -46,12 +58,12 @@ vim directory (with my config of vim),
 zsh directory (with my config of zsh),
 test.sh (Unit testing file),
 
+DOC :
+
 |     Name      |     Type      |     Detail    |
 | ------------- | ------------- | ------------- |
 | Content Cell  | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  | Content Cell  |
-
-DOC :
 IMAGE directory (contain some pictures for fix source.list KDE problems),
 KDE-Desktop.txt file,
 README.md,
