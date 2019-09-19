@@ -46,10 +46,10 @@ vim directory (with my config of vim),
 zsh directory (with my config of zsh),
 test.sh (Unit testing file),
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+|     Name      |     Type      |     Detail    |
+| ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
 
 DOC :
 IMAGE directory (contain some pictures for fix source.list KDE problems),
