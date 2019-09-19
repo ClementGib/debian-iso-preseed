@@ -46,8 +46,7 @@ vim directory (with my config of vim),
 zsh directory (with my config of zsh),
 test.sh (Unit testing file),
 
-
-| Name | Type| Detai |
+| First Header  | Second Header |
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
