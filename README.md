@@ -28,32 +28,32 @@ AND
 
 # Contains : 
 BUILD ISO IMAGE:
-extract-iso.sh 
-build-iso.sh
-preseed.cfg.example
-isolinux.cfg.autostart-example
+extract-iso.sh,
+build-iso.sh,
+preseed.cfg.example,
+isolinux.cfg.autostart-example,
 
 INSTALL PACKAGES :
-start.sh (start file for sudo right and choose auto or debug mode)
-install.sh (auto install)
-install-debug.sh (install with choice)
-log.txt (logs of scripts )
-source.list (source list config for buster with package net PubKey=
-PubKey.sh (Script for add pubkey for source list)
-source.list-empty (basic source list for debian buster)
-sudoers ("empty" file of sudoers)
-.bashrc
-vim directory (with my config of vim)
-zsh directory (with my config of zsh)
-test.sh (Unit testing file)
+start.sh (start file for sudo right and choose auto or debug mode),
+install.sh (auto install),
+install-debug.sh (install with choice),
+log.txt (logs of scripts ),
+source.list (source list config for buster with package net PubKey),
+PubKey.sh (Script for add pubkey for source list),
+source.list-empty (basic source list for debian buster),
+sudoers ("empty" file of sudoers),
+.bashrc (with my config of bash),
+vim directory (with my config of vim),
+zsh directory (with my config of zsh),
+test.sh (Unit testing file),
 
 DOC :
-IMAGE directory
-KDE-Desktop.txt file 
-README.md
-Step.txt
-list_ubuntu
-locate.txt
+IMAGE directory (contain some pictures for fix source.list KDE problems),
+KDE-Desktop.txt file,
+README.md,
+Step.txt,
+list_ubuntu,
+locate.txt,
 
 # info
 https://www.debian.org/releases/stable/amd64/apbs01.fr.html
