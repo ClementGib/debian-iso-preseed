@@ -26,6 +26,7 @@ AND
 1.3. If you have some dependencies problem correct your source.list file and start it again (with source.list provided for exemple)
 
 # Contains : 
+
 BUILD ISO IMAGE:
 
 |     	  Name     		|     Type      |     Detail    			 |
@@ -38,8 +39,6 @@ BUILD ISO IMAGE:
 
 
 INSTALL PACKAGES :
-
-
 
 |	      Name 		|      Type     |     			    Detail				|
 | ----------------------------- | ------------- | ------------------------------------------------------------- |
@@ -57,8 +56,8 @@ INSTALL PACKAGES :
 |zsh 				| Directory     | My config of ZSH						|
 
 
-DOC :
 
+DOCUMENTS :
 
 |     	  Name     		|     Type      |     Detail    			 |
 | ----------------------------- | ------------- | -------------------------------------- |
@@ -69,12 +68,6 @@ DOC :
 |locate.txt 			| text file     | XXX	 |
 |IMAGE 				| Directory     | contain some pictures for fix source.list KDE problems	 |
 
- directory (),
- file,
-,
-,
-,
-,
 
 # info
 https://www.debian.org/releases/stable/amd64/apbs01.fr.html
