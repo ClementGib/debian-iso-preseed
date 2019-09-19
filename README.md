@@ -21,10 +21,9 @@ AND
 6. make bootable your iso on USB-KEY, CD-ROM (or PXE server)
 
 7. execute start.sh:
-Sudoer config for user
-Execution of install.sh (auto install of every package) OR install-debug.sh for choose which package you wish.
-If you have some dependencies problem correct your source.list file and start it again 
-(with source.list provided for exemple)
+1. Sudoer config for user
+2. Execution of install.sh (auto install of every package) OR install-debug.sh for choose which package you wish.
+3. If you have some dependencies problem correct your source.list file and start it again (with source.list provided for exemple)
 
 # Contains : 
 BUILD ISO IMAGE:
