@@ -30,7 +30,7 @@ AND
 8.1 Use KDE-Desktop for follow my KDE customization :)
 # Contains : 
 
-BUILD ISO IMAGE:
+BUILD ISO IMAGE (FORK):
 
 |     	  Name     		|     Type      |     Detail    			 |
 | ----------------------------- | ------------- | -------------------------------------- |
