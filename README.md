@@ -52,8 +52,8 @@ INSTALL PACKAGES :
 |PubKey.sh  			| Script bash   | Script for add pubkey for source list				|
 |log.txt		        | Text file     | logs of scripts	 					|
 |source.list			| file of config| File of config apt : /etc/apt/source.list		 	|
-|source.list-empty 		| file of config| "basic" file of config apt : /etc/apt/source.list  		|
-|sudoers		        | file of config| "empty" file of config for sudoers 	 			|
+|source.list-empty 		| file of config| "basic" file to config apt : /etc/apt/source.list  		|
+|sudoers		        | file of config| "empty" file to config sudoers 	 			|
 |.bashrc 			| file of config| My config of bash 						|
 |vim 				| Directory     | My config of Vim		 				|
 |zsh 				| Directory     | My config of ZSH						|
