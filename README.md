@@ -62,16 +62,19 @@ DOC :
 
 |     	  Name     		|     Type      |     Detail    			 |
 | ----------------------------- | ------------- | -------------------------------------- |
-|extract-iso.sh 		| Script bash   | Extractor of ISO file  		 |
-|build-iso.sh   		| Script bash   | Builder of your ISO after modification |
-|preseed.cfg.example		| cfg file      | Basic exemple of preseed file		 |
-|isolinux.cfg.autostart-example | cfg file      | Basic exemple of isolinux file 	 |
-IMAGE directory (contain some pictures for fix source.list KDE problems),
-KDE-Desktop.txt file,
-README.md,
-Step.txt,
-list_ubuntu,
-locate.txt,
+|KDE-Desktop.txt 		| text file  	| My steps for config my KDE desktop	 |
+|README.md 			| README file   | [YOU ARE HERE] 			 |
+|Step.txt			| text file     | XXX					 |
+|list_ubuntu 			| text file     | List of software of my WSL ubuntu	 |
+|locate.txt 			| text file     | XXX	 |
+|IMAGE 				| Directory     | contain some pictures for fix source.list KDE problems	 |
+
+ directory (),
+ file,
+,
+,
+,
+,
 
 # info
 https://www.debian.org/releases/stable/amd64/apbs01.fr.html
