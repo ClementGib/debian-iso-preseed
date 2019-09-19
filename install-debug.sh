@@ -67,8 +67,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
 
-	sudo apt-get install gpg
-	sudo apt-get install curl
+	sudo apt-get install gpg -y -f
+	sudo apt-get install curl -y -f
 
 	#DEFAULT SOURCES LIST OF DEBIAN BUSTER 
 	echo add default buster source.list
@@ -117,18 +117,18 @@ read -p "Install essential package (need for the rest) ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo install essential package:
-  sudo apt-get install automake 
-  sudo apt-get install autoconf
-  sudo apt-get install libxmu-dev
-  sudo apt-get install libxi-dev
-  sudo apt-get install checkinstall
-  sudo apt-get install apt-transport-https
-  sudo apt-get install dirmngr
+  sudo apt-get install automake -y -f
+  sudo apt-get install autoconf -y -f
+  sudo apt-get install libxmu-dev -y -f
+  sudo apt-get install libxi-dev -y -f
+  sudo apt-get install checkinstall -y -f
+  sudo apt-get install apt-transport-https -y -f
+  sudo apt-get install dirmngr -y -f
 
 	read -p "Install common independent software package (usefull for the rest) ? yes or no " -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
-		sudo apt-get install software-properties-common
+		sudo apt-get install software-properties-common -y -f
 	fi
 	
 else
@@ -143,8 +143,8 @@ read -p "Install Java ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	# Installing JDK and JRE
-	sudo apt-get install -y default-jre
-	sudo apt-get install -y default-jdk
+	sudo apt-get install -y default-jre -y -f
+	sudo apt-get install -y default-jdk -y -f
 
 	read -p "Install version 12 with oracle? yes or no" -n 1 -r
 	if [[ $REPLY =~ ^[Yy]$ ]]
@@ -232,7 +232,7 @@ then
 	# Installing C compiler (include in g++)
 	#sudo apt-get install gcc
 	# Installing C++ compiler
-	sudo apt-get install g++	
+	sudo apt-get install g++ -y -f	
 fi
 
 ########################################################################
@@ -241,10 +241,10 @@ fi
 read -p "Install Python? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	sudo apt-get install python-pip
-	sudo apt-get install python3-pip
-	sudo apt-get install idle
-	sudo apt-get install curl python-software-properties
+	sudo apt-get install python-pip -y -f
+	sudo apt-get install python3-pip -y -f
+	sudo apt-get install idle -y -f
+	sudo apt-get install curl python-software-properties -y -f
 	sudo apt update
 	sudo apt upgrade
 	
@@ -300,17 +300,18 @@ read -p "cryptography package ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo install cryptography libs :
-	sudo apt-get install libssl-dev 
-	sudo apt-get install libffi-dev 
-	sudo apt-get install dirmngr
-	sudo apt-get install apt-transport-https 
-	sudo apt-get install gnupg 
+	sudo apt-get install libssl-dev -y -f
+	sudo apt-get install libffi-dev -y -f
+	sudo apt-get install dirmngr -y -f
+	sudo apt-get install apt-transport-https -y -f 
+	sudo apt-get install gnupg -y -f
 	
 	#with Python
 	sudo pip install cryptography
 	echo cryptography libs installed
-  sudo apt-get update
-  sudo apt-get upgrade
+	
+ 	sudo apt-get update
+  	sudo apt-get upgrade
 
 else
 	echo no cryptography libs
@@ -329,14 +330,14 @@ read -p "Install usefull libs ? yes or no " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	
-        sudo apt-get install libgl1
-        sudo apt-get install libgl1-mesa-dev 
-	sudo apt-get install lib32ncurses5-dev 
-	sudo apt-get install lib32z1-dev
-	sudo apt-get install lib32stdc++6
-	echo OPENGL and lib32 installed
-  sudo apt-get update
-  sudo apt-get upgrade
+        sudo apt-get install libgl1 -y -f
+        sudo apt-get install libgl1-mesa-dev -y -f
+	sudo apt-get install lib32ncurses5-dev -y -f
+	sudo apt-get install lib32z1-dev -y -f
+	sudo apt-get install lib32stdc++6 -y -f
+	echo OPENGL and lib32 installed -y -f
+	sudo apt-get update
+	sudo apt-get upgrade
         
 else
 	echo no usefull libs 
@@ -360,13 +361,13 @@ then
 		#Config vim 
 		cp -a vim/.vim ~/
 		cp -a vim/.vimrc ~/
-    cp -a vim/.vimrc.plug ~/
+    		cp -a vim/.vimrc.plug ~/
 		
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+   		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 		echo VIM config : ~/.vim >> locate.txt 
-	  sudo apt-get update
-    sudo apt-get upgrade
+	  	sudo apt-get update
+    		sudo apt-get upgrade
   fi
 else
 	echo no vim config
@@ -383,28 +384,28 @@ read -p "Install usefull tools ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo Install tools :
-	sudo apt-get install terminator
-	sudo apt-get install gparted
-	sudo apt-get install w3m
-	sudo apt-get install git
-	sudo apt-get install xclip
-	sudo apt-get install locate
-	sudo apt-get install find
-	sudo apt-get install net-tools
-	sudo apt-get install check 
-	sudo apt-get install flex
-	sudo apt-get install aptitude
-	sudo apt-get install net-tools
-	sudo apt-get install curl 
-	sudo apt-get install filezilla
-	sudo apt-get install smartmontools 
-	sudo apt-get install ethtool
-	sudo apt-get install thunderbird
+	sudo apt-get install terminator -y -f
+	sudo apt-get install gparted -y -f
+	sudo apt-get install w3m -y -f
+	sudo apt-get install git -y -f
+	sudo apt-get install xclip -y -f
+	sudo apt-get install locate -y -f
+	sudo apt-get install find -y -f
+	sudo apt-get install net-tools -y -f
+	sudo apt-get install check -y -f
+	sudo apt-get install flex -y -f
+	sudo apt-get install aptitude -y -f
+	sudo apt-get install net-tools -y -f
+	sudo apt-get install curl -y -f
+	sudo apt-get install filezilla -y -f
+	sudo apt-get install smartmontools -y -f
+	sudo apt-get install ethtool -y -f
+	sudo apt-get install thunderbird -y -f
 	#dual boot
-	sudo apt-get install grub-customizer
+	sudo apt-get install grub-customizer -y -f
 	#  Notes
-	sudo apt-get install xpad
-	sudo apt-get install basket
+	sudo apt-get install xpad -y -f
+	sudo apt-get install basket -y -f
 	
 	#Usually installed by default 
 	#sudo apt-get install libreoffice
@@ -430,13 +431,13 @@ read -p "Install zsh and config with Oh-My-Zsh ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo zsh install
-	sudo apt-get install zsh
+	sudo apt-get install zsh -y -f
 	sh -c "$(curl -fsSL $ZSH)"
 	#cp config
 	sh zsh/fonts/install.sh 
 	cp -r zsh/.* ~/
-  sudo apt-get update
-  sudo apt-get upgrade 
+  	sudo apt-get update
+ 	 sudo apt-get upgrade 
  
 	echo ZSH : ~/.zsh >> locate.txt 
 else
@@ -454,20 +455,20 @@ read -p "Install usefull tools 2 ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	# Erlang - Actor Concurrency Model based Programming Language
-	sudo apt-get install erlang
+	sudo apt-get install erlang -y -f
 	# KVM acceleration and cpu checker
-	sudo apt-get install cpu-checker
-	sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
-	sudo apt-get install virt-manager
-  sudo apt-get install feh
+	sudo apt-get install cpu-checker -y -f
+	sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils -y -f
+	sudo apt-get install virt-manager -y -f
+  	sudo apt-get install feh -y -f
 	# RPM and alien - sometimes used to install software packages
-	sudo apt-get install rpm
-	sudo apt-get install alien dpkg-dev debhelper
+	sudo apt-get install rpm -y -f
+	sudo apt-get install alien dpkg-dev debhelper -y -f
 
 	# Calibre - Ebook reader and converter
 	sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
-  sudo apt-get update
-  sudo apt-get upgrade 
+ 	sudo apt-get update
+  	sudo apt-get upgrade 
  
 else
 	echo no usefull tools
@@ -483,15 +484,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo Install archive extractor	
 	# Archive Extractors
-	sudo apt-get install unace 
-	sudo apt-get install unrar 
-	sudo apt-get install zip 
-	sudo apt-get install unzip 
-	sudo apt-get install p7zip-full	
+	sudo apt-get install unace -y -f
+	sudo apt-get install unrar -y -f
+	sudo apt-get install zip -y -f
+	sudo apt-get install unzip -y -f
+	sudo apt-get install p7zip-full	-y -f
 
   
-  sudo apt-get update
-  sudo apt-get upgrade
+  	sudo apt-get update
+  	sudo apt-get upgrade
   fi
 
 
@@ -513,8 +514,8 @@ then
 	sudo apt-get install tlp tlp-rdw 
 	sudo tlp start
 	sudo tlp stat
-  sudo apt-get update
-  sudo apt-get upgrade
+ 	sudo apt-get update
+	sudo apt-get upgrade
 
 else
 	echo no TLP
@@ -530,14 +531,14 @@ then
 
 	# Dictionary Client and Server with Thesaurus
 	sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
-	sudo apt-get install dict
-	sudo apt-get install dictd
-	sudo apt-get install dict-gcide
-	sudo apt-get install dict-wn
-	sudo apt-get install dict-devil
-	sudo apt-get install dict-moby-thesaurus
-  sudo apt-get update
-  sudo apt-get upgrade
+	sudo apt-get install dict -y -f
+	sudo apt-get install dictd -y -f
+	sudo apt-get install dict-gcide -y -f
+	sudo apt-get install dict-wn -y -f
+	sudo apt-get install dict-devil -y -f
+	sudo apt-get install dict-moby-thesaurus -y -f
+  	sudo apt-get update
+  	sudo apt-get upgrade
 
 else
 	echo no dictionary
@@ -550,9 +551,9 @@ fi
 read -p "Install Golang ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	sudo apt-get install golang
-  sudo apt-get update
-  sudo apt-get upgrade
+	sudo apt-get install golang -y -f
+	sudo apt-get update
+	sudo apt-get upgrade
   
 fi
 
@@ -575,8 +576,8 @@ then
 		bash netbeans8.sh
 		echo End of netbeans installationgnupg 
 		cd -
-    sudo apt-get update
-    sudo apt-get upgrade
+		sudo apt-get update
+		sudo apt-get upgrade
 	fi
 
 	read -p "Dowload eclipse ? yes or no" -n 1 -r
@@ -633,7 +634,7 @@ sudo apt-get upgrade
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		#Arduino
-		sudo apt-get install arduino
+		sudo apt-get install arduino -y -f
 		#Location of softwares file
 		echo Arduino : etc/Arduino >> locate.txt 
 	fi
@@ -654,7 +655,7 @@ read -p "Install Docker ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	# Docker
-	sudo apt-get install docker
+	sudo apt-get install docker -y -f
 	cd ~/temp
 	curl -fsSL get.docker.com -o get-docker.sh
 	sh get-docker.sh
@@ -671,7 +672,7 @@ then
 #		deb https://apt.kubernetes.io/ kubernetes-xenial main
 #		EOF
 		sudo apt-get update
-		sudo apt-get install -y kubelet kubeadm kubectl
+		sudo apt-get install -y kubelet kubeadm kubectl -y -f
 		sudo apt-mark hold kubelet kubeadm kubectl
 	fi
 
@@ -687,10 +688,10 @@ read -p "Install multimedia ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	#Multimedia
-	sudo apt-get install vlc
-	sudo apt-get install kazam
-	sudo apt-get install clementine
-	sudo apt-get install audacity
+	sudo apt-get install vlc -y -f
+	sudo apt-get install kazam -y -f
+	sudo apt-get install clementine -y -f
+	sudo apt-get install audacity -y -f
 
   sudo apt-get update
   sudo apt-get upgrade 
@@ -754,7 +755,7 @@ then
 #	cd dropbox-sdk-python
 #	sudo python setup.py install
 #	cd -
-sudo apt-get install dropbox
+sudo apt-get install dropbox -y -f
 fi
 
 
@@ -769,7 +770,7 @@ then
 	#URL 09/2019
 	cd ~/temp && wget -qO - $SublimeTxt | sudo apt-key add -
 	sudo apt-get update
-	sudo apt-get install sublime-text
+	sudo apt-get install sublime-text -y -f
 fi
 
 
@@ -782,10 +783,10 @@ then
 	#VsCode
 	#URL 09/2019
 	cd ~/temp
-  wget -O vscode.deb $VsCode
-  sudo dpkg -i vscode.deb
+	wget -O vscode.deb $VsCode
+	sudo dpkg -i vscode.deb
 	sudo apt-get install -f
-  cd -
+	cd -
 fi
 
 ########################################################################
@@ -797,38 +798,38 @@ then
 	#LAMPP:
 	#Mysql
 	cd ~/temp
-  wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
-  sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb
-  cd -
-  
-  
-  read -p "Install Mysql-workbench ? yes or no" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    #Workbench 
-    #cd ~/temp
-    #wget -O workbench.deb $MyWorkbench
-    #sudo dpkg -i workbench.deb
-    #cd -
-	  sudo apt-get install mysql-workbench
-  fi
+	wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
+	sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb
+	cd -
+	
+	read -p "Install Mysql-workbench ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+    		#Workbench 
+    		#cd ~/temp
+    		#wget -O workbench.deb $MyWorkbench
+    		#sudo dpkg -i workbench.deb
+    		#cd -
+		sudo apt-get install mysql-workbench -y -f
+  	fi
   
   #Apache server
 	#sudo apt-get install apache2 apache2-doc apache2-npm-prefork apache2-utils libexpat1 ssl-cert -y
 
 	#Install PHP (php7.0 latest version of PHP)
-  sudo apt-get install php7.2
-  sudo apt-get install php7.2 php7.2-cli php7.2-common php7.2-json php7.2-opcache php7.2-mysql php7.2-zip php7.2-fpm php7.2-mbstring
-  #Install Phpmyadmin(for database)
-  #sudo apt-get install phpmyadmin
-  read -p "Install Xampp (full package installer) ? yes or no" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-     cd ~/temp
-     sudo wget -O xampp.run $Xampp
-     sudo ./xampp.run
-     cd -
-  fi
+  	sudo apt-get install php7.2 -y -f
+  	sudo apt-get install php7.2 php7.2-cli php7.2-common php7.2-json php7.2-opcache php7.2-mysql php7.2-zip php7.2-fpm php7.2-mbstring -y -f
+ 	#Install Phpmyadmin(for database)
+ 	#sudo apt-get install phpmyadmin
+  	read -p "Install Xampp (full package installer) ? yes or no" -n 1 -r
+  
+	if [[ $REPLY =~ ^[Yy]$ ]]
+  	then
+     		cd ~/temp
+     		sudo wget -O xampp.run $Xampp
+     		sudo ./xampp.run
+     		cd -
+  	fi
 fi
 
 
@@ -845,11 +846,11 @@ then
 	#Already done
 	#echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
 	sudo apt-get update
-	sudo apt-get install -y mongodb-org
+	sudo apt-get install mongodb-org -y -f
 
 
-  sudo apt-get update -y
-  sudo apt-get upgrade -y
+  	sudo apt-get update -y
+	sudo apt-get upgrade -y
 
 fi
 #########################################################################
@@ -858,9 +859,12 @@ fi
 ########################################################################
 #	           	    KDE DESKTOP CUSTOM		    	       #
 ########################################################################
-sudo apt-get install latte-dock 
+read -p "Install latte-dock ? yes or no" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	sudo apt-get install latte-dock -y -f
 
-
+fi
 
 
 ########################################################################
