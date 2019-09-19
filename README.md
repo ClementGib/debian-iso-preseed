@@ -27,7 +27,7 @@ AND
 8. Get the `debian-iso-preseed` (in a USB for example) and execute `start.sh`:
 8.1. `Sudoer` config for user
 8.2. Execution of `install.sh` (auto install of every package) OR install-debug.sh for choose which package you wish.
-8.3. If you have some dependencies problem correct your `source.list` file and start it again (with source.list provided for example)
+8.3. If you have some dependencies problem correct your `source.list` file and start it again (with `source.list` provided for example)
 
 9. Custom your Desktop (Optional) :
 9.1 Use `KDE-Desktop` for follow my KDE customization :)
