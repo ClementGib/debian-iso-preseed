@@ -11,7 +11,7 @@
 -Application Style : 
   1. Widget Style : Breeze and configure transparency to 80%
   2. Windows Decoration : Breezemite 
-  3. GNOME App Style (GTK) : GTK2 & 3 style on Juno style, Cursor Breeze Snow and Icon Tjeùe a,d fallback theme on La Capitaine.
+  3. GNOME App Style (GTK) : GTK2 & 3 style on Juno style, Cursor theme :Breeze Snow, Icon Theme:Breeze Dark, fallback theme: Breeze Dark.
 -Desktop Behavious
   1. Workspace : Double-clic to open... 
   2. Desktop effect : Magic Lamp On, Sheet On and Wobbly Windows On
