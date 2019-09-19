@@ -21,13 +21,16 @@ AND
 	
 6. make bootable your iso on USB-KEY, CD-ROM (or PXE server)
 
-7. execute start.sh:
-7.1. Sudoer config for user
-7.2. Execution of install.sh (auto install of every package) OR install-debug.sh for choose which package you wish.
-7.3. If you have some dependencies problem correct your source.list file and start it again (with source.list provided for exemple)
+7. Get the debian-iso-preseed (in a USB for example) and installl the firmware : 
+7.1 sudo dmesg | grep firmware, 7.2 apt-cache search NAME_OF_FIRMWARE (NAME of missing firmware), 7.3 apt-get install NAME_OF_PACKAGE
 
-8. Custom your Desktop :
-8.1 Use KDE-Desktop for follow my KDE customization :)
+8. execute start.sh:
+8.1. Sudoer config for user
+8.2. Execution of install.sh (auto install of every package) OR install-debug.sh for choose which package you wish.
+8.3. If you have some dependencies problem correct your source.list file and start it again (with source.list provided for example)
+
+9. Custom your Desktop :
+9.1 Use KDE-Desktop for follow my KDE customization :)
 # Contains : 
 
 BUILD ISO IMAGE (FORK):
@@ -36,8 +39,8 @@ BUILD ISO IMAGE (FORK):
 | ----------------------------- | ------------- | -------------------------------------- |
 |extract-iso.sh 		| Script bash   | Extractor of ISO file  		 |
 |build-iso.sh   		| Script bash   | Builder of your ISO after modification |
-|preseed.cfg.example		| cfg file      | Basic exemple of preseed file		 |
-|isolinux.cfg.autostart-example | cfg file      | Basic exemple of isolinux file 	 |
+|preseed.cfg.example		| cfg file      | Basic example of preseed file		 |
+|isolinux.cfg.autostart-example | cfg file      | Basic example of isolinux file 	 |
 
 
 
