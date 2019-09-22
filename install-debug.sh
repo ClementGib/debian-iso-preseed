@@ -435,7 +435,7 @@ then
 	sh -c "$(curl -fsSL $ZSH)"
 	#cp config
 	sh zsh/fonts/install.sh 
-	cp -r zsh/.* ~/
+	cp -r zsh/* ~/
   	sudo apt-get update
  	 sudo apt-get upgrade 
  
@@ -862,6 +862,10 @@ fi
 read -p "Install latte-dock ? yes or no" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+  sudo apt-get build-dep qtbase5-dev plasma-desktop plasma-workspace kwin
+  sudo apt-get install plasma-desktop-dev
+  sudo apt-get install qt5-default
+  sudo apt-get install qtcreator
 	sudo apt-get install latte-dock -y -f
 
 fi
