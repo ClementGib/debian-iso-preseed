@@ -15,8 +15,6 @@ d-i clock-setup/ntp-server string 0.debian.pool.ntp.org
 
 
 
-
-
 ###Config Reseau###
 #Si vous voulez que les fichier préconfiguré fonctionne 
 #aussi bien avec et sans serveur dhcp
@@ -41,8 +39,6 @@ d-i netcfg/get_domain string DOMAINE
 #OU UNASSIGNED
 #d-i netcfg/get_hostname string unassigned-hostname
 #d-i netcfg/get_domain string unassigned-domain
-
-
 
 
 
@@ -73,7 +69,6 @@ d-i apt-setup/security_host string security.debian.org
 #placeriez dans /etc/apt/sources.list (sans le 'deb' du début de ligne)
 #d-i apt-setup/local0/repository string http://depot/debian stretch main
 d-i apt-setup/local0/repository string http://download.virtualbox.org/virtualbox/debian buster contrib
-
 
 
 ###Config utilisateur###
