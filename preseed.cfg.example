@@ -1,6 +1,6 @@
 ###LANGUE###
 # indiquer à la fois la langue et le pays :
-d-i debian-installer/locale string fr_FR
+d-i debian-installer/locale string en_US
 
 #KEYBOARD
 #d-i keyboard-configuration/xkb-keymap select us
@@ -56,8 +56,8 @@ d-i apt-setup/contrib boolean true
 
 #BRANCHE securite : mise a jour IMPORTANT
 #AVEC
-d-i apt-setup/services-select multiselect security
-d-i apt-setup/security_host string security.debian.org
+#d-i apt-setup/services-select multiselect security
+#d-i apt-setup/security_host string security.debian.org
 
 # OU SANS
 #d-i apt-setup/services-select multiselect
@@ -68,7 +68,7 @@ d-i apt-setup/security_host string security.debian.org
 #On peut ajouter des miroirs non officiels complémentaires : il suffit de mettre la ligne que vous
 #placeriez dans /etc/apt/sources.list (sans le 'deb' du début de ligne)
 #d-i apt-setup/local0/repository string http://depot/debian stretch main
-d-i apt-setup/local0/repository string http://download.virtualbox.org/virtualbox/debian buster contrib
+#d-i apt-setup/local0/repository string http://download.virtualbox.org/virtualbox/debian buster contrib
 
 
 ###Config utilisateur###
@@ -163,6 +163,8 @@ tasksel tasksel/first multiselect standard, kde-desktop
 ##
 d-i pkgsel/include string openssh-server build-essential
 
+#d-i pkgsel/include string openssh-server build-essential nfs-common ifenslave ssh ca-certificates \
+#curl linux-headers-amd64 vim lvm2 bc dnsutils postfix lsof lynx mc ntp screen snmpd unzip wget 
 #d-i pkgsel/include string intel-microcode, firmware-linux-free, firmware-linux-nonfree, openssh-client, openssh-server, build-essential, python3, sudo, aptitude, hwinfo, lshw, cpufrequtils, lm-sensors, powertop, ntpdate, fbset, links2, imagemagick, avahi-autoipd, iproute2, iw, wpasupplicant, rfkill, speedtest-cli, alsa-utils, bzip2, p7zip-full, unzip, lftp, gpm, apt-file, apt-xapian-index, sudo, command-not-found, bash-completion, most, mlocate, anacron, cryptsetup, nano, tree, isenkram-cli, isenkram, gdebi-core, acpi, acpitail, sysfsutils, upower, lsscsi, hdparm, smartmontools, e2fsprogs, dosfstools, udftools, ntfs-3g, sane-utils, dkms, linux-headers-linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
 
 #upgrade none, safe-upgrade or full-upgrade
@@ -224,7 +226,7 @@ d-i finish-install/reboot_in_progress note
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
-d-i preseed/late_command string \
-in-target apt-get install wget; \
-in-target apt-get install sudo; \
-in target sh ./install.sh;
+#d-i preseed/late_command string \
+#in-target apt-get install wget; \
+#in-target apt-get install sudo; \
+#in target sh ./install.sh;
