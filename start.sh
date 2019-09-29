@@ -1,9 +1,9 @@
 #!/bin/bash
-read -p "Config user to sudoer" -n 1 -r
+read -p "Config user to sudoer ? yes or no" -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  read -p "Nom de l'utilisateur :" -n 24 User
+  read -p "Type name of user :" -n 24 User
   #add sudo user
   echo "Root password for add user to sudo group :"
   su - -c "usermod -aG sudo $User"

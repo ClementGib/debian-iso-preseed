@@ -613,7 +613,7 @@ then
 		#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
 		cd ~/temp && wget -O intelliJ_community.tar.gz $IntelliJ_community
 		tar -xvf intelliJ_community.tar.gz
-		sudo mv idea-IC* /opt
+		sudo mv idea-IC-192.6603.28 /opt
 		#Location of softwares file
 		echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
 	fi
@@ -625,7 +625,7 @@ then
 		#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
 		cd ~/temp && wget -O intelliJ_full.tar.gz $IntelliJ_full
 		tar -xvf intelliJ_full.tar.gz
-		sudo mv idea-IU* /opt
+		sudo mv idea-IC-192.6603.28 /opt
 		#Location of softwares file
 		echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
 	fi

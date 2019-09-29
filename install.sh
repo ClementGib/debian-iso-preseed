@@ -3,7 +3,9 @@
 
 #SOURCE LIST FTP.FR (FRENCH) DEFAULT
 
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 sudo cp sources.list-empty /etc/apt/sources.list
+echo backup of source.list.bak in apt  
 
 
 sudo apt-get update -y
@@ -114,6 +116,9 @@ sudo apt-get install software-properties-common
 #	                      Install JAVA          	               #
 ########################################################################
 #JAVA
+read -p "Install JAVA ? yes or no : "
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
 sudo apt-get install -y default-jre
 sudo apt-get install -y default-jdk
 
@@ -443,74 +448,108 @@ sudo apt-get update
 sudo apt-get upgrade
   
 ########################################################################
-#	           	          IDE			               #
+#	                   	           IDE			                             #
 ########################################################################
 #IDE
+read -p "Install IDE (Java, c++, web, android ...) ? yes or no" -n 1 -r
+sudo apt-get install -y clementine
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	read -p "Install Netbeans ? yes or no" -n 1 -r
+	sudo apt-get install -y clementine
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		
+		#Install Netbeans
+		cd ~/temp
+		wget -O netbeans8.sh $Netbeans
+		bash netbeans8.sh
+		echo End of netbeans installationgnupg 
+		cd -
+		sudo apt-get update
+		sudo apt-get upgrade
+	fi
 
-#Install Netbeans
-cd ~/temp
-wget -O netbeans8.sh $Netbeans
-bash netbeans8.sh
-echo End of netbeans installationgnupg 	
-cd -
+	read -p "Dowload eclipse ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#Install Eclipse
+		cd ~/temp
+		wget -O eclipse.tar.gz $Eclipse
+		tar -xvf eclipse.tar.gz
+		
+		read -p "Start eclipse installer ? yes or no " -n 1 -r
+		while [[ $REPLY =~ ^[Yy]$ ]]; do
+			cd eclipse-installer
+			./eclipse-inst
+			#Start runner
+			echo End of eclipse installation
+			cd -
+			read -p "Install eclipse again ? yes or no " -n 1 -r
+			#for different eclipse verions
+		done
+				
+	fi
+
+
+	read -p "Install Android studio ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+sudo apt-get update
+sudo apt-get upgrade
+		#Install Netbeans
+		#AndroidStudio (need to create shortcut /opt/android-studio)
+		sudo apt-get install -y lib32stdc++6
+		cd ~/temp && wget -O android.tar.gz $Android 
+		tar -xvf android.tar.gz
+		sudo mv android-studio /opt/
+		sudo rm android.tar.gz
+		#Location of softwares file
+
+		echo Android-Studio : opt/android-studio >> locate.txt 
+	fi
+
+	read -p "Install IntelliJ Community ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
+		cd ~/temp && wget -O intelliJ_community.tar.gz $IntelliJ_community
+		tar -xvf intelliJ_community.tar.gz
+		sudo mv idea-IC-192.6603.28 /opt
+		#Location of softwares file
+		echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
+	fi
+
+	read -p "Install IntelliJ full ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#intelliJ  (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
+		cd ~/temp && wget -O intelliJ_full.tar.gz $IntelliJ_full
+		tar -xvf intelliJ_full.tar.gz
+		sudo mv idea-IC-192.6603.28 /opt
+		#Location of softwares file
+		echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
+	fi
+
+
+
+	read -p "Install Arduino IDE ? yes or no" -n 1 -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		#Arduino
+		sudo apt-get install arduino -y -f
+		#Location of softwares file
+		echo Arduino : etc/Arduino >> locate.txt 
+	fi
 
 sudo apt-get update
 sudo apt-get upgrade
-
-
-#Install Eclipse
-cd ~/temp
-wget -O eclipse.tar.gz $Eclipse
-tar -xvf eclipse.tar.gz
-		
-read -p "Start eclipse installer ? yes or no " -n 1 -r
-while [[ $REPLY =~ ^[Yy]$ ]]; do
-	cd eclipse-installer
-	./eclipse-inst
-	#Start runner
-	echo End of eclipse installation
-	cd -
-	read -p "Install eclipse again ? yes or no " -n 1 -r
-	#for different eclipse verions
-done
-				
 fi
 
 
 
-sudo apt-get update
-sudo apt-get upgrade
 
-
-#Install Netbeans
-#AndroidStudio (need to create shortcut /opt/android-studio)
-sudo apt-get install -y lib32stdc++6 -y -f
-cd ~/temp && wget -O android.tar.gz $Android 
-tar -xvf android.tar.gz
-sudo mv android-studio /opt/
-sudo rm android.tar.gz
-#Location of softwares file
-
-echo Android-Studio : opt/android-studio >> locate.txt 
-
-
-#intelliJ community (need to create shortcut /opt/idea-IC-192.6603.28 AFTER)
-cd ~/temp && wget -O intelliJ.tar.gz $IntelliJ 
-tar -xvf intelliJ.tar.gz
-sudo mv idea-IC-192.6603.28 /opt
-#Location of softwares file
-echo IntelliJ : opt/idea-IC-192.6603.28 >> locate.txt 
-
-#Arduino
-sudo apt-get install arduino -y -f
-#Location of softwares file
-echo Arduino : etc/Arduino >> locate.txt 
-
-
-sudo apt-get update
-sudo apt-get upgrade
-
-########################################################################
+#########################################################################
 #	           	          DOCKER    			       #
 ########################################################################
 
