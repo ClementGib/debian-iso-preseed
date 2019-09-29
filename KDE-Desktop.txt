@@ -21,22 +21,27 @@
 
 -Regional Settings on British or US Language
 
-
+Startup and shutdown -> login screen : Mojave theme
 
 -On the desktop add application menu bar with : Widget System Tray, Application Menu and digital clock, use a spacer and lock widget
 
 -Latte Custome :
 1. Delete firefox desktop shortcut
-2. Add application menu Widget
+2. Add application menu Widget and present window button
 3. dock is sort by type : system, multimedia, office, terminal and texteditor, devs tools, sys tools 
 System : Menu widget, parameter, dolphin, discover, firefox
 multimedia  : clementine, gimp,
-office : okular, onenote, office
+office : slack, okular, onenote, office
 terminal & editext: konsol, terminator, sublimetxt, vscode, vim, 
 dev tools : qt, android, arduino, eclipse, intellij, netbeans,
 sys tools : mysqlworkbench, postegre, virtualbox, teamviewer, thunderbird, dropbox, gparted, keepassx,
 ...
 
+4. Dock settings : 
+
+
+-Multi display settings : 
+add application menu bar with tasks manager Widget and use SCREEN EDGE for move on another screens
 
 Terminator zsh : 
     Open iTerm2->Preferences->Profiles->Change Font-> 12pt Meslo LG S DZ Regular for Powerline
