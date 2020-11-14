@@ -16,7 +16,7 @@
   1. Workspace : Double-clic to open... 
   2. Desktop effect : Magic Lamp On, Sheet On and Wobbly Windows On
 
--Configure application Menu : Right click on the (burk) Apple icon to configure and change to a debian logo (Y)
+-Configure application Menu : Right click on the Apple icon to configure and change to a debian logo (Y)
 -Basic konsol : Edit current profile > Appearance > Get Aritim Dark and edit to 5% transparency
 
 -Regional Settings on British or US Language
