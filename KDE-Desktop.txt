@@ -23,7 +23,7 @@
 
 Startup and shutdown -> login screen : Mojave theme
 
--On the desktop add application menu bar with : Widget System Tray, Application Menu and digital clock, use a spacer and lock widget
+-On the desktop add application menu bar with : Widget System Tray, Application Launcher, global menu (for File Edit Help bar) and better inline clock, use a spacer and lock widget
 
 -Latte Custome :
 1. Delete firefox desktop shortcut
